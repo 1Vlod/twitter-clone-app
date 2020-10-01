@@ -9,7 +9,7 @@ const StyledLogo = styled.div`
 function Logo() {
   return (
     <StyledLogo>
-      <img src={LogoPng}/>
+      <img src={LogoPng} alt="Logo"/>
     </StyledLogo>
   )
 }
