@@ -1,6 +1,7 @@
 import React from 'react';
 import Wrapper from "./components/Wrapper/Wrapper"
 import Twitter from "./components/Twitter/Twitter"
+import SignIn from "./components/SignIn/SignIn"
 import {Context} from "./utils/context"
 
 
@@ -40,15 +41,3 @@ function App() {
 
 export default App;
 
-function SignIn() {
-
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider)
-  }
-
-
-  return (
-    <button onClick={signInWithGoogle}>Sign in with google</button>
-  )
-}
