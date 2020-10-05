@@ -1,14 +1,14 @@
 import React from "react"
-import styled from "styled-components"
+import styled, {css} from "styled-components"
 
 const StyledDefaultButton = styled.button`
-  width: 211px;
-  height: 50px;
+  width: ${props => props.width || "211px"};
+  height: ${props => props.height || "50px"};
   border-radius: 100px;
-
+  transition: all .5s;
   outline: none;
   border: none;
-  background: #4BA0EC;
+  background: ${props => props.theme.blue};
 
   text-align: center;
   color: white;
@@ -17,12 +17,34 @@ const StyledDefaultButton = styled.button`
   line-height: 18px;
 
   margin-top: 37px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .7;
+  }
+
+  &:active {
+    cursor: pointer;
+    opacity: .3;
+  }
+
+  ${props => props.alt && css`
+    background: none;
+    border: 1px solid ${props => props.theme.blue};
+    color: ${props => props.theme.blue};
+    line-height: 0;
+    &:hover {
+      cursor: pointer;
+      opacity: .5;
+    }
+  `}
+  ${props => props.type === "circle" && css`border-radius: 50%`}
 `
 
 function DefaultButton(props) {
   return (
-    <StyledDefaultButton alternative={props.alternative} type={props.type}>
-      {props.text}
+    <StyledDefaultButton {...props}>
+      {props.children}
     </StyledDefaultButton>  
   )
 }

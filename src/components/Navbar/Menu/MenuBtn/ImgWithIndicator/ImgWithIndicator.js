@@ -1,12 +1,12 @@
 import React from "react"
-import styled, {css} from "styled-components"
+import styled from "styled-components"
 import img from "./menuBtnPlaceholder.svg"
 
 const StyledImgWithIndicator = styled.div`
   position: relative;
 
   & span {
-    background: #4BA0EC;
+    background: ${props => props.theme.blue};
     border-radius: 50%;
     width: 17px;
     height: 17px;
@@ -19,7 +19,6 @@ const StyledImgWithIndicator = styled.div`
 `
 
 function ImgWithIndicator(props) {
-  console.log(props.count)
   return (
     <StyledImgWithIndicator>
       <img src={img} alt="MenuBtn"/>

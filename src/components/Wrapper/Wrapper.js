@@ -1,6 +1,6 @@
 
 import React from "react"
-import styled from "styled-components"
+import styled, {ThemeProvider} from "styled-components"
 import Twitter from "../Twitter/Twitter"
 
 const TWITTER_BACKGROUND = "#17202A";
@@ -10,12 +10,24 @@ const StyledWrapper = styled.section`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
   font-family: Roboto;
 `
-function Wrapper() {
+
+const colorVaraiables = {
+  blue: "#4BA0EC",
+  line: "#3A444C",
+  grey: "#8A98A4"
+}
+
+
+function Wrapper(props) {
   return (
-    <StyledWrapper>
-      <Twitter/>
-    </StyledWrapper>
+    <ThemeProvider theme={colorVaraiables}>
+      <StyledWrapper>
+        {props.children}
+        
+      </StyledWrapper>
+    </ThemeProvider>
   )
 }
 
 export default Wrapper;
+

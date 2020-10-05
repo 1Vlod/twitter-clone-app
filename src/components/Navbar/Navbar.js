@@ -6,6 +6,7 @@ import DefaultButton from "../Buttons/DefaultButton"
 
 const StyledNavbar = styled.nav`
   padding-top: 15px;
+  max-width: 211px;
 `
 
 function Navbar() {
@@ -13,7 +14,9 @@ function Navbar() {
     <StyledNavbar>
       <Logo/>
       <Menu/>
-      <DefaultButton text="Tweet"/>
+      <DefaultButton>
+        Tweet
+      </DefaultButton>
     </StyledNavbar>
   )
 }
