@@ -1,5 +1,6 @@
-import React from "react"
+import React, {useState} from "react"
 import styled, {css} from "styled-components"
+import NewTweetModal from "../Modals/NewTweetModal"
 
 const StyledDefaultButton = styled.button`
   width: ${props => props.width || "211px"};
@@ -41,9 +42,11 @@ const StyledDefaultButton = styled.button`
   ${props => props.type === "circle" && css`border-radius: 50%`}
 `
 
-function DefaultButton(props) {
+function DefaultButton({handleClick, ...props}) {
+  
+
   return (
-    <StyledDefaultButton {...props}>
+    <StyledDefaultButton onClick={handleClick} {...props}>
       {props.children}
     </StyledDefaultButton>  
   )

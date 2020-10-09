@@ -1,7 +1,6 @@
 
 import React from "react"
 import styled, {ThemeProvider} from "styled-components"
-import Twitter from "../Twitter/Twitter"
 
 const TWITTER_BACKGROUND = "#17202A";
 

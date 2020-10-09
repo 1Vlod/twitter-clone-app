@@ -28,8 +28,8 @@ const StyledProfileInfoSm = styled.div`
 function ProfileInfoSm(props) {
   return (
     <StyledProfileInfoSm {...props}>
-      <h2 className="profileInfoSm__title">{props.title}</h2>
-      <span className="profileInfoSm__subtitle">{props.subtitle}</span>
+      <h2 className="profileInfoSm__title">{props.title || "Name"}</h2>
+      <span className="profileInfoSm__subtitle">{`@${props.subtitle || "Name"}`}</span>
     </StyledProfileInfoSm>
   )
 }

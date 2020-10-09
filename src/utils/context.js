@@ -1,4 +1,7 @@
 import React from "react"
 
 
-export const Context = React.createContext()
+const firebaseContext = React.createContext()
+const CurrentUserContext = React.createContext()
+
+export {firebaseContext, CurrentUserContext}
