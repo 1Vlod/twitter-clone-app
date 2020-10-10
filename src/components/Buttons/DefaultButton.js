@@ -17,7 +17,7 @@ const StyledDefaultButton = styled.button`
   font-size: 15px;
   line-height: 18px;
 
-  margin-top: 37px;
+  margin-top: ${props => props.mt || "37px"};
 
   &:hover {
     cursor: pointer;
