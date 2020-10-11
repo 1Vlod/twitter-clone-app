@@ -62,13 +62,13 @@ function NewTweetModal({handleClose}) {
 
   const handleClick = e => {
     e.preventDefault()
-    console.log(img)
     firestore.collection("posts").add({
       avatar: twitterUser.avatar,
       displayName: twitterUser.name,
       text: text.trim(),
       username: twitterUser.name + "4578",
-      image: img
+      image: img,
+      createTime: new Date()
     })
 
 

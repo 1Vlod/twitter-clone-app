@@ -5,4 +5,9 @@ function random(min, max) {
 
 const randomColor = () => "#" + random(16, 255).toString(16) + random(16, 255).toString(16) + random(16, 255).toString(16)
 
-export {randomColor}
+function getTimeString(date) {
+  return `${date.getHours()}:${date.getMinutes()} • ${date.getDate()}:${date.getMonth() + 1}`
+}
+
+
+export {randomColor, getTimeString}

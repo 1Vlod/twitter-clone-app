@@ -8,7 +8,7 @@ const StyledTweet = styled.div`
   display: flex;
   padding: 0 15px 13px;
 
-  border-bottom: 1px solid ${props => props.theme.line}
+  border-bottom: 1px solid ${props => props.theme.line};
 `
 
 const StyledUserImage = styled.div`

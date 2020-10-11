@@ -11,16 +11,11 @@ function ProfileTweets() {
       setPosts(snapshot.docs.map(doc => doc.data()))
     );
   }, [])
-
   return (
-    posts.map((post) => (
+    
+    posts.sort((a, b) => b.createTime - a.createTime ).map((post) => (
       <Tweet
-      displayName={post.displayName}
-      username={post.username}
-      verified={post.verified}
-      text={post.text}
-      avatar={post.avatar}
-      image={post.image}
+      {...post}
       />
     ))
     

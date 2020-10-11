@@ -8,7 +8,6 @@ import {firebaseContext, CurrentUserContext} from "../../utils/context"
 
 const StyledTwitter = styled.div`
   color: white;
-  /* margin: 0 auto; */
 
   display: flex;
   justify-content: center;
@@ -16,7 +15,7 @@ const StyledTwitter = styled.div`
 
 function Twitter() {
   const {user} = useContext(firebaseContext)
-
+  
   const [twitterUser, setTwitterUser] = useState({
     name: user.displayName,
     id: user.uid,
@@ -25,8 +24,6 @@ function Twitter() {
   })
 
   useEffect(() => {
-    // console.log(user)
-    // console.log(twitterUser)
     if (twitterUser.new) {
       firestore.collection("users").onSnapshot(snapshot => {
         const userFromFb = snapshot.docs.find(doc => doc.data().id == user.uid)
@@ -45,7 +42,6 @@ function Twitter() {
         } 
       }); 
     }
-         // setPosts(snapshot.docs.map(doc => doc.data()))
     
   }, [])
 
