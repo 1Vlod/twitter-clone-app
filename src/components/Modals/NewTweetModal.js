@@ -4,13 +4,15 @@ import styled from "styled-components"
 
 import ModalWrapper from "./ModalWrapper"
 import DefaultButton from "../Buttons/DefaultButton"
+import ModalClose from "./ModalClose"
+
 import {firestore} from "../../utils/firebase"
 import {CurrentUserContext} from "../../utils/context"
 
 
 const StyledNewTweetModal = styled.div`
-  min-width: 300px;
-  height: 200px;
+  min-width: 400px;
+  height: 235px;
   background: ${props => props.theme.background};
   margin-top: 10rem;
   border-radius: 15px;
@@ -20,23 +22,33 @@ const StyledHeader = styled.div`
   border-bottom: 1px solid ${props => props.theme.line};
 `
 
-const StyledClose = styled.span`
-  font-size: 24px;
-  color: ${props => props.theme.blue};
-
-  &:hover {
-    cursor: pointer;
-  }
-`
-
 const StyledFooter = styled.div`
   padding: 10px;
   border-top: 1px solid ${props => props.theme.line};
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `
 
+const StyledTextArea = styled.textarea`
+  resize: none;
+  border: none;
+  outline: none;
+  background: none;
 
+  color: ${props => props.theme.grey};
+  padding: 15px;
+  font-size: 15px;
+  width: calc(100% - 30px);
+  height: 80px;
+`
+const StyledImageInput = styled.input`
+  border: none;
+  outline: none;
+
+  border-radius: 20px;
+  padding: 0 15px;
+  font-size: 15px;
+`
 
 
 
@@ -44,16 +56,19 @@ const StyledFooter = styled.div`
 
 function NewTweetModal({handleClose}) {
   const [text, setText] = useState("")
+  const [img, setImg] = useState("")
   const twitterUser = useContext(CurrentUserContext)
 
 
   const handleClick = e => {
     e.preventDefault()
+    console.log(img)
     firestore.collection("posts").add({
       avatar: twitterUser.avatar,
       displayName: twitterUser.name,
-      text,
-      username: twitterUser.name + "4578"
+      text: text.trim(),
+      username: twitterUser.name + "4578",
+      image: img
     })
 
 
@@ -65,13 +80,28 @@ function NewTweetModal({handleClose}) {
     (<ModalWrapper>
       <StyledNewTweetModal>
         <StyledHeader>
-          <StyledClose onClick={handleClose}>&times;</StyledClose>
+          <ModalClose handleClose={handleClose}/>
         </StyledHeader>
 
         <form>
-          <textarea onChange={(e) => setText(e.target.value)} value={text}/>
+          <StyledTextArea 
+          onChange={(e) => setText(e.target.value)} 
+          value={text}
+          maxLength="128"
+          placeholder="Write something"/>
+
+
           <StyledFooter>
-            <DefaultButton mt="0" onClick={handleClick}>Tweet</DefaultButton>
+            <StyledImageInput
+              onChange={e => setImg(e.target.value)}
+              value={img}
+              placeholder="Set the image URL here"/>
+            <DefaultButton 
+              mt="0" 
+              onClick={handleClick}
+              width="97px"
+              height="39px"  
+            >Tweet</DefaultButton>
           </StyledFooter>
         </form>
 
