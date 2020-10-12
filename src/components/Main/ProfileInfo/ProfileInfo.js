@@ -1,6 +1,5 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
-import ProfileTheme from "./ProfileTheme.png"
 import ProfileHeader from "./ProfileHeader/ProfileHeader"
 import ProfileInfoSm from "../../ProfileInfoSm/ProfileInfoSm"
 import ProfileStats from "./ProfileStats/ProfileStats"

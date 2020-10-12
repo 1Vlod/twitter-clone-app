@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React from "react"
 import styled, {css} from "styled-components"
 import {randomColor} from "../../utils/utilsFunctions"
 import TweetMain from "./TweetMain"

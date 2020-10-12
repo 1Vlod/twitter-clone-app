@@ -1,6 +1,5 @@
-import React, {useState} from "react"
+import React from "react"
 import styled, {css} from "styled-components"
-import NewTweetModal from "../Modals/NewTweetModal"
 
 const StyledDefaultButton = styled.button`
   width: ${props => props.width || "211px"};

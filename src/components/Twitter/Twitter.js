@@ -26,7 +26,7 @@ function Twitter() {
   useEffect(() => {
     if (twitterUser.new) {
       firestore.collection("users").onSnapshot(snapshot => {
-        const userFromFb = snapshot.docs.find(doc => doc.data().id == user.uid)
+        const userFromFb = snapshot.docs.find(doc => doc.data().id === user.uid)
         if (userFromFb) {
           console.log("найдено")
           setTwitterUser({

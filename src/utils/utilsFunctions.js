@@ -5,8 +5,11 @@ function random(min, max) {
 
 const randomColor = () => "#" + random(16, 255).toString(16) + random(16, 255).toString(16) + random(16, 255).toString(16)
 
+
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
 function getTimeString(date) {
-  return `${date.getHours()}:${date.getMinutes()} • ${date.getDate()}:${date.getMonth() + 1}`
+  return `${date.getHours()}:${date.getMinutes()} • ${date.getDate() + " " + months[date.getMonth() + 1]}`
 }
 
 

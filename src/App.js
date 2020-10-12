@@ -9,7 +9,6 @@ import {auth} from "./utils/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 
 
-import NewTweetModal from "./components/Modals/NewTweetModal"
 
 function App() {
 
