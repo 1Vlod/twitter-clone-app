@@ -1,25 +1,32 @@
 import React, {useState, useEffect} from "react"
-// import styled from "styled-components"
 import Tweet from "../../Tweet/Tweet"
 import {firestore} from "../../../utils/firebase"
 
-function ProfileTweets() {
+function Tweets() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
     firestore.collection("posts").onSnapshot(snapshot =>
-      setPosts(snapshot.docs.map(doc => doc.data()))
+      setPosts(snapshot.docs.map(doc => {
+        return {
+          ...doc.data(),
+          postId: doc.id
+        }
+      }))
     );
   }, [])
   return (
     
-    posts.sort((a, b) => b.createTime - a.createTime ).map((post) => (
-      <Tweet
-      {...post}
-      />
-    ))
+    posts
+      .sort((a, b) => b.createTime - a.createTime )
+      .map((post) => (
+        <Tweet
+        key={post.postId}
+        {...post}
+        />
+      ))
     
   )
 }
 
-export default ProfileTweets
+export default Tweets

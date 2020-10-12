@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from "react"
 import styled from "styled-components"
 import Navbar from "../Navbar/Navbar"
-import Main from "../Main/Main"
+import OwnMain from "../Main/OwnMain"
 import {firestore} from "../../utils/firebase"
 import {firebaseContext, CurrentUserContext} from "../../utils/context"
 
@@ -22,6 +22,9 @@ function Twitter() {
     new: true,
     avatar: user.photoURL
   })
+
+
+  const [currentPage, setCurrentPage] = useState("ProfileMain")
 
   useEffect(() => {
     if (twitterUser.new) {
@@ -52,7 +55,7 @@ function Twitter() {
     <StyledTwitter>
       <CurrentUserContext.Provider value={twitterUser}>
         <Navbar/>
-        <Main/>
+        <OwnMain/>
       </CurrentUserContext.Provider>
     </StyledTwitter>
   )
