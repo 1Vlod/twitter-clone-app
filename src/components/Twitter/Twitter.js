@@ -5,7 +5,7 @@ import OwnMain from "../Main/OwnMain"
 import PostsMain from "../Main/PostsMain"
 
 import {firestore} from "../../utils/firebase"
-import {firebaseContext, CurrentUserContext} from "../../utils/context"
+import {firebaseContext, CurrentUserContext, CurrentPageContext} from "../../utils/context"
 
 
 const StyledTwitter = styled.div`
@@ -56,7 +56,9 @@ function Twitter() {
   return (
     <StyledTwitter>
       <CurrentUserContext.Provider value={twitterUser}>
-        <Navbar/>
+        <CurrentPageContext.Provider value={setCurrentPage}>
+          <Navbar/>
+        </CurrentPageContext.Provider>
         {currentPage === "OwnMain" && <OwnMain/>}
         {currentPage === "PostsMain" && <PostsMain/>}
       </CurrentUserContext.Provider>

@@ -1,6 +1,9 @@
-import React from "react"
+import React, {useContext} from "react"
 import styled from "styled-components"
+
 import MenuBtn from "./MenuBtn/MenuBtn"
+
+import {CurrentPageContext} from "../../../utils/context"
 
 const StyledMenu = styled.div`
   margin-top: 35px;
@@ -8,9 +11,12 @@ const StyledMenu = styled.div`
 
 
 export default function Menu() {
+
+  const setCurrentPage = useContext(CurrentPageContext)
+
   return (
     <StyledMenu>
-      <MenuBtn first={true}/>
+      <MenuBtn first={true} handleClick={() => setCurrentPage("OwnMain")}/>
       <MenuBtn/>
       <MenuBtn count="3"/>
       <MenuBtn/>

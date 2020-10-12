@@ -34,10 +34,10 @@ const StyledText = styled.span`
   margin-left: 21px;
 `
 
-function MenuBtn(props) {
+function MenuBtn({first, count, handleClick}) {
   return (
-    <StyledMenuBtn first={props.first}>
-      <ImgWithIndicator count={props.count}/>
+    <StyledMenuBtn first={first} onClick={handleClick}>
+      <ImgWithIndicator count={count}/>
       <StyledText>Home</StyledText>
     </StyledMenuBtn>
   )
