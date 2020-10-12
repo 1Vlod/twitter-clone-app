@@ -16,7 +16,7 @@ const StyledDefaultButton = styled.button`
   font-size: 15px;
   line-height: 18px;
 
-  margin-top: 37px;
+  margin-top: ${props => props.mt || "37px"};
 
   &:hover {
     cursor: pointer;
@@ -41,9 +41,11 @@ const StyledDefaultButton = styled.button`
   ${props => props.type === "circle" && css`border-radius: 50%`}
 `
 
-function DefaultButton(props) {
+function DefaultButton({handleClick, ...props}) {
+  
+
   return (
-    <StyledDefaultButton {...props}>
+    <StyledDefaultButton onClick={handleClick} {...props}>
       {props.children}
     </StyledDefaultButton>  
   )

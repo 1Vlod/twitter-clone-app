@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import ProfileInfoSm from "../ProfileInfoSm/ProfileInfoSm"
-import TweetImg from "./TweetImg.png"
+// import TweetImg from "./TweetImg.png"
 import TweetButtons from "./TweetButtons"
 
 
 const StyledTweetMain = styled.div`
   margin-left: 9px;
+  width: 100%;
 `
 const StyledTweetConent = styled.div`
 
@@ -18,20 +19,26 @@ const StyledTweetText = styled.p`
   font-weight: 400;
 `
 const StyledTweetImg = styled.img`
+  max-width: 100%;
 `
 
-function TweetMain() {
-
+function TweetMain({displayName, username, verified, text, image, createTime}) {
   return (
     <StyledTweetMain>
-      <ProfileInfoSm oneLine={true} fz={"16px"} title="Name" subtitle="@Name"/>
+      <ProfileInfoSm 
+        oneLine={true} 
+        fz={"16px"} 
+        title={displayName} 
+        subtitle={username} 
+        createTime={createTime}
+      />
       
       <StyledTweetConent>
         <StyledTweetText>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's: bit.ly/2kvf6yj
+        {text}
         </StyledTweetText>
 
-        <StyledTweetImg src={TweetImg} alt="Tweet Img"/>
+        {image && <StyledTweetImg src={image} alt="Tweet Img"/>}
       </StyledTweetConent>
 
 

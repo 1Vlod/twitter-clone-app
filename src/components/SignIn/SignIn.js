@@ -1,7 +1,10 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
-import {Context} from "../../utils/context"
+import {firebaseContext} from "../../utils/context"
+
 import firebase from "firebase/app";
+import "firebase/firestore"
+
 
 const StyledSignIn = styled.div`
   height: 100vh;
@@ -41,11 +44,19 @@ const StyledSignInButton = styled.button`
 
 function SignIn(props) {
 
-  const {auth} = useContext(Context)
+  const {auth} = useContext(firebaseContext)
 
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
+
+    // firestore.collection("users").get().then(querySnapshot => {
+    //   querySnapshot.forEach(doc => {
+    //     console.log(doc.id)
+    //     console.log(doc.data())
+    //   })
+    // })
+    
   }
 
 

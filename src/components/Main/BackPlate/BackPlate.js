@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import ProfileInfoSm from "../../ProfileInfoSm/ProfileInfoSm"
-import {Context} from "../../../utils/context"
+import {firebaseContext} from "../../../utils/context"
 
 const arrow = <FontAwesomeIcon icon={faArrowLeft} />
 
@@ -32,14 +32,10 @@ const StyledBackBtn = styled.button`
   }
 `
 
-const StyledArrow = styled.span`
-  
-`
 
 function BackPlate(props) {
-  const {auth, user} = useContext(Context)
+  const {auth, user} = useContext(firebaseContext)
 
-  console.log("user", user)
   return (
     <StyledBackPlate>
       <StyledBackBtn onClick={() => auth.signOut()} >

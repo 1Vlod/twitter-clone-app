@@ -1,7 +1,6 @@
 
 import React from "react"
 import styled, {ThemeProvider} from "styled-components"
-import Twitter from "../Twitter/Twitter"
 
 const TWITTER_BACKGROUND = "#17202A";
 
@@ -14,7 +13,8 @@ const StyledWrapper = styled.section`
 const colorVaraiables = {
   blue: "#4BA0EC",
   line: "#3A444C",
-  grey: "#8A98A4"
+  grey: "#8A98A4",
+  background: TWITTER_BACKGROUND
 }
 
 
