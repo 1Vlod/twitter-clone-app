@@ -1,9 +1,13 @@
-import React, {useState, useEffect} from "react"
-import Tweet from "../../Tweet/Tweet"
-import {firestore} from "../../../utils/firebase"
+import React, {useState, useEffect, useContext} from "react"
 
-function Tweets() {
+import Tweet from "../Tweet/Tweet"
+
+import {firestore} from "../../utils/firebase"
+
+
+function Tweets({filter}) {
   const [posts, setPosts] = useState([])
+  
 
   useEffect(() => {
     firestore.collection("posts").onSnapshot(snapshot =>
@@ -15,9 +19,18 @@ function Tweets() {
       }))
     );
   }, [])
+
+
   return (
     
     posts
+      .filter(post => {
+        if (filter) {
+          return post.username === filter
+        }
+
+        return true
+      })
       .sort((a, b) => b.createTime - a.createTime )
       .map((post) => (
         <Tweet

@@ -2,6 +2,8 @@ import React, {useState, useContext, useEffect} from "react"
 import styled from "styled-components"
 import Navbar from "../Navbar/Navbar"
 import OwnMain from "../Main/OwnMain"
+import PostsMain from "../Main/PostsMain"
+
 import {firestore} from "../../utils/firebase"
 import {firebaseContext, CurrentUserContext} from "../../utils/context"
 
@@ -24,7 +26,7 @@ function Twitter() {
   })
 
 
-  const [currentPage, setCurrentPage] = useState("ProfileMain")
+  const [currentPage, setCurrentPage] = useState("PostsMain")
 
   useEffect(() => {
     if (twitterUser.new) {
@@ -55,7 +57,8 @@ function Twitter() {
     <StyledTwitter>
       <CurrentUserContext.Provider value={twitterUser}>
         <Navbar/>
-        <OwnMain/>
+        {currentPage === "OwnMain" && <OwnMain/>}
+        {currentPage === "PostsMain" && <PostsMain/>}
       </CurrentUserContext.Provider>
     </StyledTwitter>
   )
