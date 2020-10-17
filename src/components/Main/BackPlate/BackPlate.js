@@ -1,9 +1,12 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import ProfileInfoSm from "../../ProfileInfoSm/ProfileInfoSm"
-import {firebaseContext} from "../../../utils/context"
+
+import {CurrentUserContext} from "../../../utils/context"
+
 
 const arrow = <FontAwesomeIcon icon={faArrowLeft} />
 
@@ -34,14 +37,14 @@ const StyledBackBtn = styled.button`
 
 
 function BackPlate(props) {
-  const {auth, user} = useContext(firebaseContext)
+  const twitterUser =  useContext(CurrentUserContext)
 
   return (
     <StyledBackPlate>
-      <StyledBackBtn onClick={() => auth.signOut()} >
+      <StyledBackBtn >
         {arrow}
       </StyledBackBtn>
-      <ProfileInfoSm title={user.displayName} subtitle="2,006 Tweets" ml="34px"/>
+      <ProfileInfoSm title={twitterUser.displayName} subtitle="2,006 Tweets" ml="34px"/>
     </StyledBackPlate>
   )
 }

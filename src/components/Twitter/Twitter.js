@@ -1,8 +1,10 @@
 import React, {useState, useContext, useEffect} from "react"
 import styled from "styled-components"
+
 import Navbar from "../Navbar/Navbar"
 import OwnMain from "../Main/OwnMain"
 import PostsMain from "../Main/PostsMain"
+import SignOutButton from "../Buttons/SignOutButton"
 
 import {firestore} from "../../utils/firebase"
 import {firebaseContext, CurrentUserContext, CurrentPageContext} from "../../utils/context"
@@ -61,6 +63,7 @@ function Twitter() {
         </CurrentPageContext.Provider>
         {currentPage === "OwnMain" && <OwnMain/>}
         {currentPage === "PostsMain" && <PostsMain/>}
+        <SignOutButton/>
       </CurrentUserContext.Provider>
     </StyledTwitter>
   )
