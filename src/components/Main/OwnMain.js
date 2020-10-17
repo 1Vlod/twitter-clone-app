@@ -7,7 +7,6 @@ import Tweets from "../Tweets/Tweets"
 import {CurrentUserContext} from "../../utils/context"
 
 function OwnMain() {
-
   const twitterUser = useContext(CurrentUserContext)
 
   return (
