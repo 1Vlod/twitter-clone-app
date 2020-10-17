@@ -1,10 +1,15 @@
-import React, {useState, useContext, useEffect} from "react"
+import React, {useState, useContext, useEffect, Suspense} from "react"
 import styled from "styled-components"
-import Navbar from "../Navbar/Navbar"
-import Main from "../Main/Main"
-import {firestore} from "../../utils/firebase"
-import {firebaseContext, CurrentUserContext} from "../../utils/context"
 
+import Navbar from "../Navbar/Navbar"
+import PostsMain from "../Main/PostsMain"
+import SignOutButton from "../Buttons/SignOutButton"
+
+import {firestore} from "../../utils/firebase"
+import {firebaseContext, CurrentUserContext, CurrentPageContext} from "../../utils/context"
+
+
+const OwnMain = React.lazy(() => import("../Main/OwnMain"))
 
 const StyledTwitter = styled.div`
   color: white;
@@ -23,12 +28,14 @@ function Twitter() {
     avatar: user.photoURL
   })
 
+
+  const [currentPage, setCurrentPage] = useState("PostsMain")
+
   useEffect(() => {
     if (twitterUser.new) {
       firestore.collection("users").onSnapshot(snapshot => {
         const userFromFb = snapshot.docs.find(doc => doc.data().id === user.uid)
         if (userFromFb) {
-          console.log("найдено")
           setTwitterUser({
             ...userFromFb.data(),
             new: false
@@ -43,7 +50,7 @@ function Twitter() {
       }); 
     }
     
-  }, [])
+  }, [twitterUser, user])
 
 
   
@@ -51,8 +58,15 @@ function Twitter() {
   return (
     <StyledTwitter>
       <CurrentUserContext.Provider value={twitterUser}>
-        <Navbar/>
-        <Main/>
+        <CurrentPageContext.Provider value={setCurrentPage}>
+          <Navbar/>
+        
+          <Suspense fallback={<div>Loading...</div>}>
+            {currentPage === "OwnMain" && <OwnMain/>}
+            {currentPage === "PostsMain" && <PostsMain/>}
+          </Suspense>
+        </CurrentPageContext.Provider>
+        <SignOutButton/>
       </CurrentUserContext.Provider>
     </StyledTwitter>
   )

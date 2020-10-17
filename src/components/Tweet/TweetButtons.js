@@ -23,6 +23,7 @@ const StyledTweetButton = styled.button`
   outline: none;
   color: ${props => props.theme.grey};
   font-size: 15px;
+  transition: color .5s;
   &:hover {
     cursor: pointer;
     color: ${props => props.theme.blue};

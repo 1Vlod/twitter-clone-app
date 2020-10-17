@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import BackPlate from "./BackPlate/BackPlate"
-import ProfileInfo from "./ProfileInfo/ProfileInfo"
-import ProfileTweets from "./ProfileTweets/ProfileTweets"
+
 
 const StyledMain = styled.main`
   max-width: 599px;
@@ -10,12 +8,10 @@ const StyledMain = styled.main`
   border-right: 1px solid ${props => props.theme.line};
 `
 
-function Main() {
+function Main({children}) {
   return (
     <StyledMain>
-      <BackPlate/>
-      <ProfileInfo/>
-      <ProfileTweets/>
+      {children}
     </StyledMain>
   )
 }

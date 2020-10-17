@@ -25,7 +25,6 @@ const StyledProfileTheme = styled.img `
 function ProfileInfo() {
 
   const twitterUser = useContext(CurrentUserContext)
-  console.log(twitterUser)
   return(
     <StyledProfileInfo>
       {twitterUser.userTheme && 
@@ -35,7 +34,7 @@ function ProfileInfo() {
 
       <ProfileHeader/>
 
-      <ProfileInfoSm title={twitterUser.name} subtitle="Name" ml="15px" mt="-15px"/>
+      <ProfileInfoSm title={twitterUser.name} subtitle={twitterUser.id} ml="15px" mt="-15px"/>
       
       <ProfileStats/>
     </StyledProfileInfo>

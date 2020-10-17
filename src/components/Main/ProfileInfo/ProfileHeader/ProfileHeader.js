@@ -1,10 +1,12 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
+
 import DefaultButton from "../../../Buttons/DefaultButton"
-import ProfilePhoto from "./ProfilePhoto.png"
 import AltButton from "../../../Buttons/AltButton"
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell} from '@fortawesome/free-solid-svg-icons'
+
 import {CurrentUserContext} from "../../../../utils/context"
 
 const bell = <FontAwesomeIcon icon={faBell} swapOpacity/>
