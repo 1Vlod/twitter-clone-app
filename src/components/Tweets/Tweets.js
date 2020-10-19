@@ -20,8 +20,6 @@ function Tweets({filter}) {
     );
   }, [])
 
-  console.log(filter)
-
   return (
     
     posts

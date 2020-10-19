@@ -52,7 +52,8 @@ function FormAddTweet({handleClose}) {
       text: text.trim(),
       username: twitterUser.id,
       image: img,
-      createTime: new Date()
+      createTime: new Date(),
+      userTheme: twitterUser.userTheme
     })
 
     setText("")

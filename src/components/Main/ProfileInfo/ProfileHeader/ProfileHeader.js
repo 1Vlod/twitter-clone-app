@@ -32,13 +32,13 @@ const StyledProfilePhoto = styled.img`
 
 
 
-function ProfileHeader() {
+function ProfileHeader({avatar, userTheme}) {
 
   const twitterUser = useContext(CurrentUserContext)
 
   return (
     <StyledProfileHeader>
-      <StyledProfilePhoto src={twitterUser.avatar} alt="ProfilePhoto" mt={twitterUser.userTheme ? "-71px" : 0}/>
+      <StyledProfilePhoto src={avatar} alt="ProfilePhoto" mt={userTheme ? "-71px" : 0}/>
       <StyledButtonsWrapper>
         <AltButton width="40px" height="40px" type="circle">&hellip;</AltButton>
         <AltButton width="40px" height="40px" type="circle">{bell}</AltButton>

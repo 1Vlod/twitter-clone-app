@@ -33,22 +33,32 @@ function Twitter() {
   const [currentPage, setCurrentPage] = useState({type: "PostsMain"})
   
   useEffect(() => {
+
     if (twitterUser.new) {
+
       firestore.collection("users").onSnapshot(snapshot => {
+
         const userFromFb = snapshot.docs.find(doc => doc.data().id === user.uid)
+
         if (userFromFb) {
+
           setTwitterUser({
             ...userFromFb.data(),
             new: false
           })
+
         } else {
+          
           firestore.collection("users").add({...twitterUser, new: false})    
+
           setTwitterUser({
             ...twitterUser,
             new: false
           })
         } 
+        
       }); 
+
     }
     
   }, [twitterUser, user])

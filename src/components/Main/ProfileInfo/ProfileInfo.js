@@ -22,19 +22,18 @@ const StyledProfileTheme = styled.img `
   width: 100%;
 `
 
-function ProfileInfo() {
+function ProfileInfo({userTheme, name, id, avatar}) {
 
-  const twitterUser = useContext(CurrentUserContext)
   return(
     <StyledProfileInfo>
-      {twitterUser.userTheme && 
+      {userTheme && 
       (<StyledProfileThemeWrapper>
-        <StyledProfileTheme src={twitterUser.userTheme} alt="profile theme"/>
+        <StyledProfileTheme src={userTheme} alt="profile theme"/>
       </StyledProfileThemeWrapper>)}
 
-      <ProfileHeader/>
+      <ProfileHeader avatar={avatar} userTheme={Boolean(userTheme)}/>
 
-      <ProfileInfoSm title={twitterUser.name} subtitle={twitterUser.id} ml="15px" mt="-15px"/>
+      <ProfileInfoSm title={name} subtitle={id} ml="15px" mt="-15px"/>
       
       <ProfileStats/>
     </StyledProfileInfo>

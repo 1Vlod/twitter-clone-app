@@ -11,8 +11,13 @@ function OwnMain() {
 
   return (
     <Main>
-      <BackPlate/>
-      <ProfileInfo/>
+      <BackPlate title={twitterUser.name}/>
+      <ProfileInfo 
+        userTheme={twitterUser.userTheme}  
+        name={twitterUser.name} 
+        id={twitterUser.id}
+        avatar={twitterUser.avatar}
+      />
       <Tweets filter={twitterUser.id}/>
     </Main>
   )

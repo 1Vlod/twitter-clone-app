@@ -36,7 +36,7 @@ const StyledBackBtn = styled.button`
 `
 
 
-function BackPlate(props) {
+function BackPlate({title}) {
   const twitterUser =  useContext(CurrentUserContext)
   const {setCurrentPage} =  useContext(CurrentPageContext)
 
@@ -45,7 +45,7 @@ function BackPlate(props) {
       <StyledBackBtn onClick={() => setCurrentPage({type: "PostsMain"})}>
         {arrow}
       </StyledBackBtn>
-      <ProfileInfoSm title={twitterUser.displayName} subtitle="2,006 Tweets" ml="34px"/>
+      <ProfileInfoSm title={title} subtitle="2,006 Tweets" ml="34px"/>
     </StyledBackPlate>
   )
 }

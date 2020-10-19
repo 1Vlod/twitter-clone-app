@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 
 const StyledMain = styled.main`
-  max-width: 599px;
+  width: 599px;
   border-left: 1px solid ${props => props.theme.line};
   border-right: 1px solid ${props => props.theme.line};
 `

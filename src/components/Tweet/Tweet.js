@@ -38,6 +38,10 @@ function Tweet({avatar, ...otherOptions}) {
     <StyledTweet>
       <StyledUserImage avatar={avatar} onClick={() => setCurrentPage({
         ...currentPage,
+        userOptions: {
+          ...otherOptions,
+          avatar
+        },
         otherUserId: otherOptions.username,
         type: "OtherUserPage"
       })}>
