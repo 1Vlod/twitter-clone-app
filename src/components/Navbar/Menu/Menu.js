@@ -12,11 +12,11 @@ const StyledMenu = styled.div`
 
 export default function Menu() {
 
-  const setCurrentPage = useContext(CurrentPageContext)
+  const {setCurrentPage} = useContext(CurrentPageContext)
 
   return (
     <StyledMenu>
-      <MenuBtn first={true} handleClick={() => setCurrentPage("OwnMain")}/>
+      <MenuBtn first={true} handleClick={() => setCurrentPage({type: "OwnMain"})}/>
       <MenuBtn/>
       <MenuBtn count="3"/>
       <MenuBtn/>

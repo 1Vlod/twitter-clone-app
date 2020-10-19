@@ -17,11 +17,11 @@ const StyledLogoImg = styled.img`
 `
 
 function Logo() {
-  const setCurrentPage = useContext(CurrentPageContext)
+  const {setCurrentPage} = useContext(CurrentPageContext)
 
   return (
     <StyledLogo>
-      <StyledLogoImg src={LogoPng} alt="Logo" onClick={() => setCurrentPage("PostsMain")}/>
+      <StyledLogoImg src={LogoPng} alt="Logo" onClick={() => setCurrentPage({type: "PostsMain"})}/>
     </StyledLogo>
   )
 }

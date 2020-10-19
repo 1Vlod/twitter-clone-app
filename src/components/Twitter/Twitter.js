@@ -10,6 +10,7 @@ import {firebaseContext, CurrentUserContext, CurrentPageContext} from "../../uti
 
 
 const OwnMain = React.lazy(() => import("../Main/OwnMain"))
+const OtherUserPage = React.lazy(() => import("../Main/OtherUserPage"))
 
 const StyledTwitter = styled.div`
   color: white;
@@ -29,8 +30,8 @@ function Twitter() {
   })
 
 
-  const [currentPage, setCurrentPage] = useState("PostsMain")
-
+  const [currentPage, setCurrentPage] = useState({type: "PostsMain"})
+  
   useEffect(() => {
     if (twitterUser.new) {
       firestore.collection("users").onSnapshot(snapshot => {
@@ -58,12 +59,13 @@ function Twitter() {
   return (
     <StyledTwitter>
       <CurrentUserContext.Provider value={twitterUser}>
-        <CurrentPageContext.Provider value={setCurrentPage}>
+        <CurrentPageContext.Provider value={{currentPage, setCurrentPage}}>
           <Navbar/>
         
           <Suspense fallback={<div>Loading...</div>}>
-            {currentPage === "OwnMain" && <OwnMain/>}
-            {currentPage === "PostsMain" && <PostsMain/>}
+            {currentPage.type === "OwnMain" && <OwnMain/>}
+            {currentPage.type === "PostsMain" && <PostsMain/>}
+            {currentPage.type === "OtherUserPage" && <OtherUserPage/>}
           </Suspense>
         </CurrentPageContext.Provider>
         <SignOutButton/>
