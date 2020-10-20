@@ -50,31 +50,45 @@ function Twitter() {
 
     if (twitterUser.new) {
 
-      firestore.collection("users").onSnapshot(snapshot => {
+      console.log(user.uid)
 
-        const userFromFb = snapshot.docs.find(doc => doc.data().id === user.uid)
+      let docRef = firestore.collection("users").doc(user.uid)
 
-        if (userFromFb) {
+      docRef.get().then(function(doc) {
+          if (doc.exists) {
+              console.log("Document data:", doc.data());
+              setTwitterUser({
+                ...doc.data(),
+                new: false
+              })
+          } else {
+            firestore.collection("users").doc(user.uid).set({...twitterUser, new: false})
+          }
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
 
-          setTwitterUser({
-            ...userFromFb.data(),
-            new: false
-          })
 
-        } else {
-          
-          firestore.collection("users").add({...twitterUser, new: false})    
+      // firestore.collection("users").onSnapshot(snapshot => {
+      //   const userFromFb = snapshot.docs.find(doc => doc.data().id === user.uid)
+      //   console.log(userFromFb?.id)
 
-          setTwitterUser({
-            ...twitterUser,
-            new: false
-          })
-        } 
-        
-      }); 
+      //   if (userFromFb) {
+      //     setTwitterUser({
+      //       ...userFromFb.data(),
+      //       new: false
+      //     })
 
+      //   } else {
+      //     firestore.collection("users").doc(user.uid).set({...twitterUser, new: false})    
+
+      //     setTwitterUser({
+      //       ...twitterUser,
+      //       new: false
+      //     })
+      //   } 
+      // });
     }
-    
   }, [twitterUser, user])
 
 
