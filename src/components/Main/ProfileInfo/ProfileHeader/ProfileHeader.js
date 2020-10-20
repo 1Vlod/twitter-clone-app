@@ -4,10 +4,10 @@ import styled from "styled-components"
 import DefaultButton from "../../../Buttons/DefaultButton"
 import AltButton from "../../../Buttons/AltButton"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBell} from '@fortawesome/free-solid-svg-icons'
 
-import {CurrentUserContext} from "../../../../utils/context"
+import {CurrentUserContext, CurrentPageContext} from "../../../../utils/context"
 
 const bell = <FontAwesomeIcon icon={faBell} swapOpacity/>
 
@@ -34,18 +34,26 @@ const StyledProfilePhoto = styled.img`
 
 function ProfileHeader({avatar, userTheme}) {
 
-  const twitterUser = useContext(CurrentUserContext)
+  const {currentPage} = useContext(CurrentPageContext)
 
   return (
     <StyledProfileHeader>
       <StyledProfilePhoto src={avatar} alt="ProfilePhoto" mt={userTheme ? "-71px" : 0}/>
-      <StyledButtonsWrapper>
-        <AltButton width="40px" height="40px" type="circle">&hellip;</AltButton>
-        <AltButton width="40px" height="40px" type="circle">{bell}</AltButton>
-        <DefaultButton width="105px" height="40px">Following</DefaultButton>
-      </StyledButtonsWrapper>
+      {currentPage.type === "OtherUserPage" && <ButtonsWrapper/>}
+      
     </StyledProfileHeader>
   )
 }
+
+function ButtonsWrapper() {
+  return (
+    <StyledButtonsWrapper>
+      <AltButton width="40px" height="40px" type="circle">&hellip;</AltButton>
+      <AltButton width="40px" height="40px" type="circle">{bell}</AltButton>
+      <DefaultButton width="105px" height="40px">Following</DefaultButton>
+    </StyledButtonsWrapper>
+  )
+}
+
 
 export default ProfileHeader

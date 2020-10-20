@@ -1,11 +1,11 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import ProfileInfoSm from "../../ProfileInfoSm/ProfileInfoSm"
 
-import {CurrentUserContext, CurrentPageContext} from "../../../utils/context"
+import {CurrentPageContext} from "../../../utils/context"
 
 
 const arrow = <FontAwesomeIcon icon={faArrowLeft} />
@@ -37,7 +37,6 @@ const StyledBackBtn = styled.button`
 
 
 function BackPlate({title}) {
-  const twitterUser =  useContext(CurrentUserContext)
   const {setCurrentPage} =  useContext(CurrentPageContext)
 
   return (

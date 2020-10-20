@@ -18,12 +18,12 @@ const StyledTweet = styled.div`
 
 const StyledUserImage = styled.div`
   height: 49px;
-  width: 49px;
+  min-width: 49px;
   border-radius: 50%;
 
   background: ${randomColor()};
 
-  & img {
+  & .userImage__avatar {
     max-width: 49px;
     border-radius: 50%;
   }
@@ -36,6 +36,7 @@ function Tweet({avatar, ...otherOptions}) {
   const {currentPage, setCurrentPage} = useContext(CurrentPageContext)
   return (
     <StyledTweet>
+
       <StyledUserImage avatar={avatar} onClick={() => setCurrentPage({
         ...currentPage,
         userOptions: {
@@ -45,9 +46,11 @@ function Tweet({avatar, ...otherOptions}) {
         otherUserId: otherOptions.username,
         type: "OtherUserPage"
       })}>
-        {avatar && <img src={avatar} alt="tweet avatar"/>}
+        {avatar && <img src={avatar} alt="tweet avatar" className={"userImage__avatar"}/>}
       </StyledUserImage>
+
       <TweetMain {...otherOptions}/>
+
     </StyledTweet>
   )
 }

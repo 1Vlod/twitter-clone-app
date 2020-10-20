@@ -30,8 +30,22 @@ function Twitter() {
   })
 
 
-  const [currentPage, setCurrentPage] = useState({type: "PostsMain"})
+  const [currentPage, setCurrentPageInitital] = useState({type: "PostsMain"})
   
+  function setCurrentPage(state) {
+    
+    if (state.type === "OtherUserPage" && 
+      state.otherUserId === twitterUser.id) {
+
+        setCurrentPageInitital({...currentPage, type: "OwnMain"})
+        return
+    }
+
+    setCurrentPageInitital(state)
+  }
+
+
+
   useEffect(() => {
 
     if (twitterUser.new) {
@@ -64,7 +78,6 @@ function Twitter() {
   }, [twitterUser, user])
 
 
-  
 
   return (
     <StyledTwitter>
