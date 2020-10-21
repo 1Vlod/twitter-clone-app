@@ -7,7 +7,7 @@ import AltButton from "../../../Buttons/AltButton"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBell} from '@fortawesome/free-solid-svg-icons'
 
-import {CurrentUserContext, CurrentPageContext} from "../../../../utils/context"
+import {CurrentPageContext} from "../../../../utils/context"
 
 const bell = <FontAwesomeIcon icon={faBell} swapOpacity/>
 

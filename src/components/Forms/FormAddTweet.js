@@ -40,7 +40,7 @@ function FormAddTweet({handleClose}) {
 
   const [text, setText] = useState("")
   const [img, setImg] = useState("")
-  const twitterUser = useContext(CurrentUserContext)
+  const {twitterUser} = useContext(CurrentUserContext)
 
 
   const handleClick = e => {

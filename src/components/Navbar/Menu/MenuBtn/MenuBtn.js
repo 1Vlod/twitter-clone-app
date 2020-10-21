@@ -34,11 +34,11 @@ const StyledText = styled.span`
   margin-left: 21px;
 `
 
-function MenuBtn({first, count, handleClick}) {
+function MenuBtn({first, count, handleClick, children}) {
   return (
     <StyledMenuBtn first={first} onClick={handleClick}>
       <ImgWithIndicator count={count}/>
-      <StyledText>Home</StyledText>
+      <StyledText>{children || "placeholder"}</StyledText>
     </StyledMenuBtn>
   )
 }

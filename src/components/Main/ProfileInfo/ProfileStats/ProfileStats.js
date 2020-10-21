@@ -18,12 +18,11 @@ const StyledCountStats = styled.span`
 
 function ProfileStats() {
 
-  const twitterUser = useContext(CurrentUserContext)
-
+  const {twitterUser} = useContext(CurrentUserContext)
   return (
     <StyledProfileStats>
-      <StyledCountStats>398 <span className="grey">Following</span></StyledCountStats>
-      <StyledCountStats ml="21px">556 <span className="grey">Followers</span></StyledCountStats>
+      <StyledCountStats>{twitterUser.followersCount} <span className="grey">Following</span></StyledCountStats>
+      <StyledCountStats ml="21px">{twitterUser.subscribeList.length} <span className="grey">Followers</span></StyledCountStats>
     </StyledProfileStats>
     
   )

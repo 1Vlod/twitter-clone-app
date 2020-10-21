@@ -71,26 +71,6 @@ function Twitter() {
           console.log("Error getting document:", error);
       });
 
-
-      // firestore.collection("users").onSnapshot(snapshot => {
-      //   const userFromFb = snapshot.docs.find(doc => doc.data().id === user.uid)
-      //   console.log(userFromFb?.id)
-
-      //   if (userFromFb) {
-      //     setTwitterUser({
-      //       ...userFromFb.data(),
-      //       new: false
-      //     })
-
-      //   } else {
-      //     firestore.collection("users").doc(user.uid).set({...twitterUser, new: false})    
-
-      //     setTwitterUser({
-      //       ...twitterUser,
-      //       new: false
-      //     })
-      //   } 
-      // });
     }
   }, [twitterUser, user])
 
@@ -98,7 +78,7 @@ function Twitter() {
 
   return (
     <StyledTwitter>
-      <CurrentUserContext.Provider value={twitterUser}>
+      <CurrentUserContext.Provider value={{twitterUser, setTwitterUser}}>
         <CurrentPageContext.Provider value={{currentPage, setCurrentPage}}>
           <Navbar/>
         
