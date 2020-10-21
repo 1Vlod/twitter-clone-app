@@ -24,7 +24,7 @@ const StyledButtonsWrapper = styled.div`
   }
 `
 const StyledProfilePhoto = styled.img`
-  max-width: 140px;
+  width: 140px;
   border-radius: 50%;
 
   margin-top: ${props => props.mt};

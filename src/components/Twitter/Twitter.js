@@ -26,7 +26,10 @@ function Twitter() {
     name: user.displayName,
     id: user.uid,
     new: true,
-    avatar: user.photoURL
+    avatar: user.photoURL,
+    subscribeList: [],
+    followersCount: 0,
+    userTheme: ""
   })
 
 
@@ -37,8 +40,8 @@ function Twitter() {
     if (state.type === "OtherUserPage" && 
       state.otherUserId === twitterUser.id) {
 
-        setCurrentPageInitital({...currentPage, type: "OwnMain"})
-        return
+      setCurrentPageInitital({...currentPage, type: "OwnMain"})
+      return
     }
 
     setCurrentPageInitital(state)
@@ -50,13 +53,13 @@ function Twitter() {
 
     if (twitterUser.new) {
 
-      console.log(user.uid)
-
       let docRef = firestore.collection("users").doc(user.uid)
 
       docRef.get().then(function(doc) {
+
           if (doc.exists) {
               console.log("Document data:", doc.data());
+
               setTwitterUser({
                 ...doc.data(),
                 new: false

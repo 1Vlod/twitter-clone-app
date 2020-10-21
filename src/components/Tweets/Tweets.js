@@ -20,9 +20,8 @@ function Tweets({filter}) {
     );
   }, [])
 
-  return (
-    
-    posts
+  const renderTweets = (posts) => {
+    const renderPosts = posts
       .filter(post => {
         if (filter) {
           return post.username === filter
@@ -37,7 +36,14 @@ function Tweets({filter}) {
         {...post}
         />
       ))
-    
+
+    return renderPosts.length > 0 
+      ? renderPosts
+      : <div>Empty</div>
+  }
+
+  return (
+    renderTweets(posts) 
   )
 }
 

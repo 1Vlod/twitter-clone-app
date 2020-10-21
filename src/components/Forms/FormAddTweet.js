@@ -46,7 +46,7 @@ function FormAddTweet({handleClose}) {
   const handleClick = e => {
     e.preventDefault()
 
-    firestore.collection("posts").add({
+    firestore.collection("posts").set({
       avatar: twitterUser.avatar,
       displayName: twitterUser.name,
       text: text.trim(),
