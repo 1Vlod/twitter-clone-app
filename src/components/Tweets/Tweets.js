@@ -10,18 +10,7 @@ function Tweets({filter}) {
   const [posts, setPosts] = useState([])
   let docRef = firestore.collection("posts")
 
-  const [value, loading, error] = useCollection(docRef)  
-  console.log(value?.docs)
-  // useEffect(() => {
-  //   firestore.collection("posts").onSnapshot(snapshot =>
-  //     setPosts(snapshot.docs.map(doc => {
-  //       return {
-  //         ...doc.data(),
-  //         postId: doc.id
-  //       }
-  //     }))
-  //   );
-  // }, [])
+  const [value, loading, error] = useCollection(docRef)
 
   const renderTweets = (posts) => {
     const renderPosts = posts
@@ -46,7 +35,6 @@ function Tweets({filter}) {
         {...post.data()}
         />
       ))
-      console.log(renderPosts)
     return renderPosts.length > 0 
       ? renderPosts
       : <div>Empty</div>

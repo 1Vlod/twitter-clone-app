@@ -38,6 +38,22 @@ const StyledDefaultButton = styled.button`
       opacity: .5;
     }
   `}
+
+  ${props => props.danger && css`
+    
+    &:hover {
+      cursor: pointer;
+      background: rgb(202, 32, 85);
+      opacity: 1;
+    }
+
+    &:active {
+      background: rgb(180, 32, 85);
+      cursor: pointer;
+      opacity: 1;
+    }
+  `}
+
   ${props => props.type === "circle" && css`border-radius: 50%`}
 `
 
