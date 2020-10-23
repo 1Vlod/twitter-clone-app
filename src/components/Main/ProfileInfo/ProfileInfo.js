@@ -21,7 +21,7 @@ const StyledProfileTheme = styled.img `
   width: 100%;
 `
 
-function ProfileInfo({userTheme, name, id, avatar}) {
+function ProfileInfo({userTheme, name, id, avatar, followersCount, followingCount}) {
 
   return(
     <StyledProfileInfo>
@@ -34,7 +34,7 @@ function ProfileInfo({userTheme, name, id, avatar}) {
 
       <ProfileInfoSm title={name} subtitle={id} ml="15px" mt="-15px"/>
       
-      <ProfileStats/>
+      <ProfileStats followersCount={followersCount} followingCount={followingCount}/>
     </StyledProfileInfo>
 
   )

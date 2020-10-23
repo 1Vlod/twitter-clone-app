@@ -14,6 +14,8 @@ function MainInner({info}) {
       name={info.name} 
       id={info.id}
       avatar={info.avatar}
+      followersCount={info.followersCount}
+      followingCount={info.subscribeList.length}
       />
 
       <Tweets filter={info.id}/>

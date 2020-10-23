@@ -14,7 +14,7 @@ const StyledMenu = styled.div`
 function Menu() {
 
   const {setCurrentPage} = useContext(CurrentPageContext)
-  const {twitterUser, setTwitterUser} = useContext(CurrentUserContext)
+  const {twitterUser} = useContext(CurrentUserContext)
 
   let docRef = firestore.collection("users").doc(twitterUser.id)
 

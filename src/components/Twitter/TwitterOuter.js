@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react"
-import { useDocument } from 'react-firebase-hooks/firestore';
+import { useDocument } from 'react-firebase-hooks/firestore'
 
 import Twitter from "./Twitter"
 import Loader from "../Loader/Loader"
@@ -24,8 +24,6 @@ function TwitterOuter() {
   let docRef = firestore.doc(`users/${user.uid}`)
 
   const [otherUser, loading, error] = useDocument(docRef)
-
-  console.log(otherUser)
 
   if (!loading && !otherUser.exists) {
     firestore.collection("users").doc(user.uid).set({...twitterUser, new: false})

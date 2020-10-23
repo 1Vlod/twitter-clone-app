@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBell} from '@fortawesome/free-solid-svg-icons'
 
 import {CurrentPageContext, CurrentUserContext} from "../../../../utils/context"
-import {firestore} from "../../../../utils/firebase"
+import {firestore, firebase} from "../../../../utils/firebase"
 
 const bell = <FontAwesomeIcon icon={faBell} swapOpacity/>
 
@@ -49,7 +49,7 @@ function ProfileHeader({avatar, userTheme}) {
 function ButtonsWrapper() {
 
   const {currentPage} = useContext(CurrentPageContext)
-  const {twitterUser, setTwitterUser} = useContext(CurrentUserContext)
+  const {twitterUser} = useContext(CurrentUserContext)
 
   const handleClick = () => {
 
@@ -64,12 +64,7 @@ function ButtonsWrapper() {
     let docRef = firestore.collection("users").doc(twitterUser.id)
 
     docRef.update({
-      subscribeList: [...twitterUser.subscribeList, currentPage.otherUserId]
-    })
-
-    setTwitterUser({
-      ...twitterUser,
-      subscribeList: [...twitterUser.subscribeList, currentPage.otherUserId]
+      subscribeList: firebase.firestore.FieldValue.arrayUnion(currentPage.otherUserId)
     })
 
   } 

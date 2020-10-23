@@ -14,22 +14,6 @@ function OtherUserPage() {
   let docRef = firestore.doc(`users/${currentPage.otherUserId || "unknow"}`)
 
   const [otherUser, loading, error] = useDocument(docRef)
-  // useEffect(() => {
-  //     docRef.get().then(function(doc) {
-  //         if (doc.exists) {
-  //             setPageState({
-  //               ...doc.data(),
-  //             })
-  //         } else {
-  //           console.log("данного пользователя нет")
-  //         }
-  //     }).catch(function(error) {
-  //         console.log("Error getting document:", error);
-  //     });
-  // }, [currentPage])
-
-  console.log(otherUser)
-  console.log(otherUser?.data())
 
   return (
     <Main>
