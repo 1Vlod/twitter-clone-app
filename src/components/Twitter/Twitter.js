@@ -1,12 +1,12 @@
-import React, {useState, useContext, useEffect, Suspense} from "react"
+import React, {useState, useContext, Suspense} from "react"
 import styled from "styled-components"
+
 
 import Navbar from "../Navbar/Navbar"
 import PostsMain from "../Main/PostsMain"
 import SignOutButton from "../Buttons/SignOutButton"
 
-import {firestore} from "../../utils/firebase"
-import {firebaseContext, CurrentUserContext, CurrentPageContext} from "../../utils/context"
+import {CurrentUserContext, CurrentPageContext} from "../../utils/context"
 
 
 const OwnMain = React.lazy(() => import("../Main/OwnMain"))
@@ -19,20 +19,8 @@ const StyledTwitter = styled.div`
   justify-content: center;
 `
 
-function Twitter() {
-  const {user} = useContext(firebaseContext)
+function Twitter({twitterUser}) {
   
-  const [twitterUser, setTwitterUser] = useState({
-    name: user.displayName,
-    id: user.uid,
-    new: true,
-    avatar: user.photoURL,
-    subscribeList: [],
-    followersCount: 0,
-    userTheme: ""
-  })
-
-
   const [currentPage, setCurrentPageInitital] = useState({type: "PostsMain"})
   
   function setCurrentPage(state) {
@@ -48,37 +36,9 @@ function Twitter() {
   }
 
 
-
-  useEffect(() => {
-
-    if (twitterUser.new) {
-
-      let docRef = firestore.collection("users").doc(user.uid)
-
-      docRef.get().then(function(doc) {
-
-          if (doc.exists) {
-              console.log("Document data:", doc.data());
-
-              setTwitterUser({
-                ...doc.data(),
-                new: false
-              })
-          } else {
-            firestore.collection("users").doc(user.uid).set({...twitterUser, new: false})
-          }
-      }).catch(function(error) {
-          console.log("Error getting document:", error);
-      });
-
-    }
-  }, [twitterUser, user])
-
-
-
   return (
-    <StyledTwitter>
-      <CurrentUserContext.Provider value={{twitterUser, setTwitterUser}}>
+    <StyledTwitter> 
+      <CurrentUserContext.Provider value={{twitterUser}}>
         <CurrentPageContext.Provider value={{currentPage, setCurrentPage}}>
           <Navbar/>
         
@@ -87,14 +47,15 @@ function Twitter() {
             {currentPage.type === "PostsMain" && <PostsMain/>}
             {currentPage.type === "OtherUserPage" && <OtherUserPage/>}
           </Suspense>
+
         </CurrentPageContext.Provider>
+
         <SignOutButton/>
+        
       </CurrentUserContext.Provider>
     </StyledTwitter>
   )
 }
 
 
-
-
-export default Twitter;
+export default Twitter

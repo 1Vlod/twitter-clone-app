@@ -53,7 +53,8 @@ function FormAddTweet({handleClose}) {
       username: twitterUser.id,
       image: img,
       createTime: new Date(),
-      userTheme: twitterUser.userTheme
+      userTheme: twitterUser.userTheme,
+      createrId: twitterUser.id,
     })
 
     setText("")

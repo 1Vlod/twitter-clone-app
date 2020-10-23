@@ -22,11 +22,6 @@ function Menu() {
     docRef.update({
       followersCount: twitterUser.followersCount + 1
     })
-
-    setTwitterUser({
-      ...twitterUser, 
-      followersCount: twitterUser.followersCount + 1
-    })
   }
 
   return (

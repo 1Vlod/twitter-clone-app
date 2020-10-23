@@ -1,8 +1,10 @@
 import React from 'react';
+
 import Wrapper from "./components/Wrapper/Wrapper"
-import Twitter from "./components/Twitter/Twitter"
+import TwitterOuter from "./components/Twitter/TwitterOuter"
 import SignIn from "./components/SignIn/SignIn"
 import Loader from "./components/Loader/Loader"
+
 import {firebaseContext} from "./utils/context"
 import {auth} from "./utils/firebase"
 
@@ -17,7 +19,7 @@ function App() {
   return (
     <Wrapper >
       <firebaseContext.Provider value={{user, auth}}>
-        {user ? <Twitter/> : (
+        {user ? <TwitterOuter/> : (
         loading ? <Loader/> :
         <SignIn/>
         )}

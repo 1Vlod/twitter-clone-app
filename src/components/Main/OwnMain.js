@@ -1,6 +1,8 @@
 import React, {useContext} from "react"
 
 import Main from "./Main"
+import MainInner from "./MainInner/MainInner"
+
 import BackPlate from "./BackPlate/BackPlate"
 import ProfileInfo from "./ProfileInfo/ProfileInfo"
 import Tweets from "../Tweets/Tweets"
@@ -11,14 +13,7 @@ function OwnMain() {
 
   return (
     <Main>
-      <BackPlate title={twitterUser.name}/>
-      <ProfileInfo 
-        userTheme={twitterUser.userTheme}  
-        name={twitterUser.name} 
-        id={twitterUser.id}
-        avatar={twitterUser.avatar}
-      />
-      <Tweets filter={twitterUser.id}/>
+      <MainInner info={twitterUser}/>
     </Main>
   )
 }
