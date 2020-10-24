@@ -21,7 +21,7 @@ const StyledProfileTheme = styled.img `
   width: 100%;
 `
 
-function ProfileInfo({userTheme, name, id, avatar, followersCount, followingCount}) {
+function ProfileInfo({userTheme, name, id, avatar, followersCount, followingCount, admin}) {
 
   return(
     <StyledProfileInfo>
@@ -30,7 +30,7 @@ function ProfileInfo({userTheme, name, id, avatar, followersCount, followingCoun
         <StyledProfileTheme src={userTheme} alt="profile theme"/>
       </StyledProfileThemeWrapper>)}
 
-      <ProfileHeader avatar={avatar} userTheme={Boolean(userTheme)}/>
+      <ProfileHeader avatar={avatar} userTheme={Boolean(userTheme)} admin={admin}/>
 
       <ProfileInfoSm title={name} subtitle={id} ml="15px" mt="-15px"/>
       

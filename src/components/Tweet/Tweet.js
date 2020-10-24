@@ -24,7 +24,8 @@ const StyledUserImage = styled.div`
   background: ${randomColor()};
 
   & .userImage__avatar {
-    max-width: 49px;
+    width: 49px;
+    height: 49px;
     border-radius: 50%;
   }
 

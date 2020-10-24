@@ -20,7 +20,7 @@ const StyledButtonsWrapper = styled.div`
 `
 
 
-function ButtonsWrapper() {
+function ButtonsWrapper({admin}) {
 
   const {currentPage} = useContext(CurrentPageContext)
   const {twitterUser} = useContext(CurrentUserContext)
@@ -70,7 +70,7 @@ function ButtonsWrapper() {
     <StyledButtonsWrapper>
       <AltButton width="40px" height="40px" type="circle">&hellip;</AltButton>
       <AltButton width="40px" height="40px" type="circle">{bell}</AltButton>
-      {renderSubscribingBtn()}
+      {!admin && renderSubscribingBtn()}
     </StyledButtonsWrapper>
   )
 }

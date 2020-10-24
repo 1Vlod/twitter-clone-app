@@ -20,6 +20,7 @@ const StyledButtonsWrapper = styled.div`
 `
 const StyledProfilePhoto = styled.img`
   width: 140px;
+  height: 140px;
   border-radius: 50%;
 
   margin-top: ${props => props.mt};
@@ -27,14 +28,14 @@ const StyledProfilePhoto = styled.img`
 
 
 
-function ProfileHeader({avatar, userTheme}) {
+function ProfileHeader({avatar, userTheme, admin}) {
 
   const {currentPage} = useContext(CurrentPageContext)
 
   return (
     <StyledProfileHeader>
       <StyledProfilePhoto src={avatar} alt="ProfilePhoto" mt={userTheme ? "-71px" : 0}/>
-      {currentPage.type === "OtherUserPage" && <ButtonsWrapper/>}
+      {currentPage.type === "OtherUserPage" && <ButtonsWrapper admin={admin}/>}
       
     </StyledProfileHeader>
   )
