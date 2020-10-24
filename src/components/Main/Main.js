@@ -7,6 +7,7 @@ const StyledMain = styled.main`
   width: 599px;
   border-left: 1px solid ${props => props.theme.line};
   border-right: 1px solid ${props => props.theme.line};
+  margin-left: 44px;
 `
 
 function Main({children}) {

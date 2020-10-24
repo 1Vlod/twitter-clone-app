@@ -3,10 +3,10 @@ import DefaultButton from "./DefaultButton"
 
 import {auth} from "../../utils/firebase"
 
-function SighOutButton() {
+function SighOutButton(props) {
 
   return (
-    <DefaultButton handleClick={() => auth.signOut()} >SignOut</DefaultButton>
+    <DefaultButton handleClick={() => auth.signOut()} {...props}>SignOut</DefaultButton>
   )
 }
 

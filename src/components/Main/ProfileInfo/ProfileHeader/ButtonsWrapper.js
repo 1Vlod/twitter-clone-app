@@ -60,16 +60,16 @@ function ButtonsWrapper({admin}) {
 
   const renderSubscribingBtn = () => {
     if (twitterUser.subscribeList.includes(currentPage.otherUserId)) {
-      return <UnsubscribeButton width="105px" height="40px" onClick={handleUnsubscribe}>UnFollow</UnsubscribeButton>
+      return <UnsubscribeButton width="105px" height="40px" ml="9px" onClick={handleUnsubscribe}>UnFollow</UnsubscribeButton>
     }
     
-    return <DefaultButton width="105px" height="40px" onClick={handleSubscribe}>Follow</DefaultButton>
+    return <DefaultButton width="105px" height="40px" ml="9px" onClick={handleSubscribe}>Follow</DefaultButton>
   }
 
   return (
     <StyledButtonsWrapper>
       <AltButton width="40px" height="40px" type="circle">&hellip;</AltButton>
-      <AltButton width="40px" height="40px" type="circle">{bell}</AltButton>
+      <AltButton width="40px" height="40px" ml="9px" type="circle">{bell}</AltButton>
       {!admin && renderSubscribingBtn()}
     </StyledButtonsWrapper>
   )

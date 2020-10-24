@@ -21,7 +21,7 @@ const StyledImgWithIndicator = styled.div`
 function ImgWithIndicator(props) {
   return (
     <StyledImgWithIndicator>
-      <img src={img} alt="MenuBtn"/>
+      <img src={props.src || img} alt="MenuBtn"/>
       {props.count && (<span>{props.count}</span>)}
     </StyledImgWithIndicator>
   )

@@ -55,7 +55,7 @@ function Twitter({twitterUser}) {
 
         </CurrentPageContext.Provider>
         <Suspense fallback={<Loader loaderWidth="211px" loaderHeight="80px"/>}>
-          <SignOutButton/>            
+          <SignOutButton ml="32px"/>            
         </Suspense>
         
         

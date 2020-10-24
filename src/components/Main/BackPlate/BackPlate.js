@@ -6,6 +6,7 @@ import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import ProfileInfoSm from "../../ProfileInfoSm/ProfileInfoSm"
 
 import {CurrentPageContext} from "../../../utils/context"
+import * as pageCreators from "../../../utils/pageTypeCreataors" 
 
 
 const arrow = <FontAwesomeIcon icon={faArrowLeft} />
@@ -41,7 +42,7 @@ function BackPlate({title}) {
 
   return (
     <StyledBackPlate>
-      <StyledBackBtn onClick={() => setCurrentPage({type: "PostsMain"})}>
+      <StyledBackBtn onClick={() => setCurrentPage(pageCreators.homeMain())}>
         {arrow}
       </StyledBackBtn>
       <ProfileInfoSm title={title} subtitle="2,006 Tweets" ml="34px"/>

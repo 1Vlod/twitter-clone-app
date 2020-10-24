@@ -1,6 +1,7 @@
 import React, {useContext} from "react"
 import { useDocument } from 'react-firebase-hooks/firestore'
 
+import Loader from "../Loader/Loader"
 import Main from "./Main"
 import MainInner from "./MainInner/MainInner"
 
@@ -17,7 +18,7 @@ function OtherUserPage() {
 
   return (
     <Main>
-      {loading && <div>Loading...</div>}
+      {loading && <Loader/>}
       {error && <div>Sorry, error: {JSON.stringify(error)}</div>}
       {otherUser?.exists 
         ? (<MainInner info={otherUser.data()}/>)
