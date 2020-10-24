@@ -1,19 +1,17 @@
-import React, {useContext} from "react"
+import React from "react"
 
 import Main from "./Main"
 import Tweets from "../Tweets/Tweets"
 import FormAddTweet from "../Forms/FormAddTweet"
 
-import {CurrentUserContext} from "../../utils/context"
 
 
-function PostsMain() {
-  const {twitterUser} = useContext(CurrentUserContext)
+function PostsMain({filter}) {
 
   return (
     <Main>
       <FormAddTweet/>
-      <Tweets filter={twitterUser.subscribeList}/>
+      <Tweets filter={filter}/>
     </Main>
   )
 }

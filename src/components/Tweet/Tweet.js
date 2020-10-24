@@ -35,15 +35,12 @@ const StyledUserImage = styled.div`
 
 function Tweet({avatar, ...otherOptions}) {
   const {currentPage, setCurrentPage} = useContext(CurrentPageContext)
+
   return (
     <StyledTweet>
 
       <StyledUserImage avatar={avatar} onClick={() => setCurrentPage({
         ...currentPage,
-        userOptions: {
-          ...otherOptions,
-          avatar
-        },
         otherUserId: otherOptions.username,
         type: "OtherUserPage"
       })}>

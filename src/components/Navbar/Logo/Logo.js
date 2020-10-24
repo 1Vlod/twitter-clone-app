@@ -2,7 +2,7 @@ import React, {useContext} from "react"
 import styled from "styled-components"
 
 import {CurrentPageContext} from "../../../utils/context"
-
+import * as pageCreators from "../../../utils/pageTypeCreataors" 
 
 import LogoPng from "./Logo.png"
 
@@ -21,7 +21,7 @@ function Logo() {
 
   return (
     <StyledLogo>
-      <StyledLogoImg src={LogoPng} alt="Logo" onClick={() => setCurrentPage({type: "PostsMain"})}/>
+      <StyledLogoImg src={LogoPng} alt="Logo" onClick={() => setCurrentPage(pageCreators.homeMain())}/>
     </StyledLogo>
   )
 }

@@ -3,7 +3,8 @@ import styled from "styled-components"
 
 
 import Navbar from "../Navbar/Navbar"
-import PostsMain from "../Main/PostsMain"
+import ExploreMain from "../Main/ExploreMain"
+import HomeMain from "../Main/HomeMain"
 import SignOutButton from "../Buttons/SignOutButton"
 
 import {CurrentUserContext, CurrentPageContext} from "../../utils/context"
@@ -21,7 +22,7 @@ const StyledTwitter = styled.div`
 
 function Twitter({twitterUser}) {
   
-  const [currentPage, setCurrentPageInitital] = useState({type: "PostsMain"})
+  const [currentPage, setCurrentPageInitital] = useState({type: "HomeMain"})
   
   function setCurrentPage(state) {
     
@@ -44,8 +45,9 @@ function Twitter({twitterUser}) {
         
           <Suspense fallback={<div>Loading...</div>}>
             {currentPage.type === "OwnMain" && <OwnMain/>}
-            {currentPage.type === "PostsMain" && <PostsMain/>}
             {currentPage.type === "OtherUserPage" && <OtherUserPage/>}
+            {currentPage.type === "HomeMain" && <HomeMain/>}
+            {currentPage.type === "ExploreMain" && <ExploreMain/>}
           </Suspense>
 
         </CurrentPageContext.Provider>
