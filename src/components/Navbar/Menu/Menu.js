@@ -5,6 +5,7 @@ import MenuBtn from "./MenuBtn/MenuBtn"
 
 import {CurrentPageContext, CurrentUserContext} from "../../../utils/context"
 import {firestore} from "../../../utils/firebase"
+import * as pageCreators from "../../../utils/pageTypeCreataors" 
 
 const StyledMenu = styled.div`
   margin-top: 35px;
@@ -28,17 +29,23 @@ function Menu() {
     <StyledMenu>
       <MenuBtn 
       first={true} 
-      handleClick={() => setCurrentPage({type: "OwnMain"})}>
+      handleClick={() => setCurrentPage(pageCreators.homeMain())}>
         Home
       </MenuBtn>
 
-      <MenuBtn/>
+      <MenuBtn 
+      handleClick={() => setCurrentPage(pageCreators.exploreMain())}>
+        Explore
+      </MenuBtn>
       <MenuBtn count="3"/>
       <MenuBtn/>
       <MenuBtn/>
       <MenuBtn/>
 
-      <MenuBtn handleClick={addFollower}>Profile</MenuBtn>
+      <MenuBtn 
+      handleClick={() => setCurrentPage(pageCreators.ownMain())}>
+        Profile
+      </MenuBtn>
 
       <MenuBtn/>
     </StyledMenu>

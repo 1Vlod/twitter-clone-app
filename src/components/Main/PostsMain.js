@@ -7,7 +7,6 @@ import FormAddTweet from "../Forms/FormAddTweet"
 
 
 function PostsMain({filter}) {
-
   return (
     <Main>
       <FormAddTweet/>
