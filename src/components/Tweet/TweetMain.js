@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+
 import ProfileInfoSm from "../ProfileInfoSm/ProfileInfoSm"
-// import TweetImg from "./TweetImg.png"
 import TweetButtons from "./TweetButtons"
 
 
@@ -22,7 +22,7 @@ const StyledTweetImg = styled.img`
   max-width: 100%;
 `
 
-function TweetMain({displayName, username, verified, text, image, createTime}) {
+function TweetMain({displayName, username, text, image, createTime}) {
   return (
     <StyledTweetMain>
       <ProfileInfoSm 

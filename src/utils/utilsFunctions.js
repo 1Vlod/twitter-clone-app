@@ -9,8 +9,19 @@ const randomColor = () => "#" + random(16, 255).toString(16) + random(16, 255).t
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 function getTimeString(date) {
-  return `${date.getHours()}:${date.getMinutes()} • ${date.getDate() + " " + months[date.getMonth() + 1]}`
+  return `
+  ${createTwoSymbolsNumber(date.getHours())}:${createTwoSymbolsNumber(date.getMinutes())} • 
+  ${createTwoSymbolsNumber(date.getDate()) + " " 
+  + months[date.getMonth()]}`
 }
 
+function createTwoSymbolsNumber(num) {
+
+  if (num.toString().length > 1) {
+    return num
+  } 
+  
+  return "0" + num 
+}
 
 export {randomColor, getTimeString}
