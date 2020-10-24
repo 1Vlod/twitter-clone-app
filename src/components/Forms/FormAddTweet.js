@@ -43,48 +43,51 @@ function FormAddTweet({handleClose}) {
   const {twitterUser} = useContext(CurrentUserContext)
 
 
-  const handleClick = e => {
+  const handleSubmit = e => {
     e.preventDefault()
 
-    firestore.collection("posts").add({
-      avatar: twitterUser.avatar,
-      displayName: twitterUser.name,
-      text: text.trim(),
-      username: twitterUser.id,
-      image: img,
-      createTime: new Date(),
-      userTheme: twitterUser.userTheme,
-      createrId: twitterUser.id,
-    })
+    if (text.length > 5 && (img.length == 0 || img.length >= 10)){
+      firestore.collection("posts").add({
+        avatar: twitterUser.avatar,
+        displayName: twitterUser.name,
+        text: text.trim(),
+        username: twitterUser.id,
+        image: img,
+        createTime: new Date(),
+        userTheme: twitterUser.userTheme,
+        createrId: twitterUser.id,
+      })
 
-    setText("")
-    setImg("")
+      setText("")
+      setImg("")
 
-    handleClose && handleClose()
+      handleClose && handleClose()
+    }
 
   }
 
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <StyledTextArea 
       onChange={(e) => setText(e.target.value)} 
       value={text}
       maxLength="128"
       placeholder="Write something"/>
 
-
       <StyledFooter>
         <StyledImageInput
           onChange={e => setImg(e.target.value)}
           value={img}
-          placeholder="Set the image URL here"/>
+          placeholder="Set the image URL here"
+        />
+
         <DefaultButton 
-          mt="0" 
-          onClick={handleClick}
+          mt="0"
           width="97px"
-          height="39px"  
-        >Tweet</DefaultButton>
+          height="39px">
+          Tweet
+        </DefaultButton>
       </StyledFooter>
     </form>
   )

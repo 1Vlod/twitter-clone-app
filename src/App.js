@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {Suspense} from 'react';
+import { useAuthState } from "react-firebase-hooks/auth"
+
 
 import Wrapper from "./components/Wrapper/Wrapper"
-import TwitterOuter from "./components/Twitter/TwitterOuter"
-import SignIn from "./components/SignIn/SignIn"
 import Loader from "./components/Loader/Loader"
 
 import {firebaseContext} from "./utils/context"
 import {auth} from "./utils/firebase"
 
-import { useAuthState } from "react-firebase-hooks/auth"
 
+const  TwitterOuter = React.lazy(() => import("./components/Twitter/TwitterOuter"))
+const  SignIn = React.lazy(() => import("./components/SignIn/SignIn"))
 
 
 function App() {
@@ -19,10 +20,11 @@ function App() {
   return (
     <Wrapper >
       <firebaseContext.Provider value={{user, auth}}>
-        {user ? <TwitterOuter/> : (
-        loading ? <Loader/> :
-        <SignIn/>
-        )}
+        <Suspense fallback={<Loader/>}>
+          {user ? <TwitterOuter/> : (
+          loading ? "" : <SignIn/>
+          )}
+        </Suspense>
       </firebaseContext.Provider>
     </Wrapper>
   );

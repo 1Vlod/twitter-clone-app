@@ -1,17 +1,17 @@
 import React, {useState, Suspense} from "react"
 import styled from "styled-components"
 
-
-import Navbar from "../Navbar/Navbar"
-import ExploreMain from "../Main/ExploreMain"
-import HomeMain from "../Main/HomeMain"
-import SignOutButton from "../Buttons/SignOutButton"
+import Loader from "../Loader/Loader"
 
 import {CurrentUserContext, CurrentPageContext} from "../../utils/context"
 
 
 const OwnMain = React.lazy(() => import("../Main/OwnMain"))
 const OtherUserPage = React.lazy(() => import("../Main/OtherUserPage"))
+const ExploreMain = React.lazy(() => import("../Main/ExploreMain"))
+const HomeMain = React.lazy(() => import("../Main/HomeMain"))
+const SignOutButton = React.lazy(() => import("../Buttons/SignOutButton"))
+const Navbar = React.lazy(() => import("../Navbar/Navbar"))
 
 const StyledTwitter = styled.div`
   color: white;
@@ -41,9 +41,12 @@ function Twitter({twitterUser}) {
     <StyledTwitter> 
       <CurrentUserContext.Provider value={{twitterUser}}>
         <CurrentPageContext.Provider value={{currentPage, setCurrentPage}}>
-          <Navbar/>
-        
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader loaderWidth="211px"/>}>
+            <Navbar/>
+          </Suspense>
+          
+      
+          <Suspense fallback={<Loader loaderWidth="599px"/>}>
             {currentPage.type === "OwnMain" && <OwnMain/>}
             {currentPage.type === "OtherUserPage" && <OtherUserPage/>}
             {currentPage.type === "HomeMain" && <HomeMain/>}
@@ -51,8 +54,10 @@ function Twitter({twitterUser}) {
           </Suspense>
 
         </CurrentPageContext.Provider>
-
-        <SignOutButton/>
+        <Suspense fallback={<Loader loaderWidth="211px" loaderHeight="80px"/>}>
+          <SignOutButton/>            
+        </Suspense>
+        
         
       </CurrentUserContext.Provider>
     </StyledTwitter>

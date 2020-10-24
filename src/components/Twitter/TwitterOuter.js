@@ -1,11 +1,13 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, Suspense} from "react"
 import { useDocument } from 'react-firebase-hooks/firestore'
 
-import Twitter from "./Twitter"
 import Loader from "../Loader/Loader"
+import Twitter from "./Twitter"
 
 import {firestore} from "../../utils/firebase"
 import {firebaseContext} from "../../utils/context"
+
+
 
 
 function TwitterOuter() {

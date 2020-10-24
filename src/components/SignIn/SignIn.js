@@ -1,5 +1,6 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
+
 import {firebaseContext} from "../../utils/context"
 
 import firebase from "firebase/app";
@@ -48,15 +49,7 @@ function SignIn(props) {
 
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider)
-
-    // firestore.collection("users").get().then(querySnapshot => {
-    //   querySnapshot.forEach(doc => {
-    //     console.log(doc.id)
-    //     console.log(doc.data())
-    //   })
-    // })
-    
+    auth.signInWithPopup(provider)    
   }
 
 

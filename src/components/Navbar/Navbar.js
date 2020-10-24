@@ -1,10 +1,12 @@
-import React, {useState} from "react"
+import React, {useState, Suspense} from "react"
 import styled from "styled-components"
+
 import Logo from "./Logo/Logo"
 import Menu from "./Menu/Menu"
 import DefaultButton from "../Buttons/DefaultButton"
 
 import NewTweetModal from "../Modals/NewTweetModal"
+
 
 const StyledNavbar = styled.nav`
   padding-top: 15px;

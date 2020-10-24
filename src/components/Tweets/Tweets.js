@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import {useCollectionData, useCollection} from 'react-firebase-hooks/firestore';
 
 import Tweet from "../Tweet/Tweet"
+import Loader from "../Loader/Loader"
 
 import {firestore} from "../../utils/firebase"
 
@@ -42,7 +43,7 @@ function Tweets({filter}) {
 
   return (
     <>
-      {loading && <div>Loading...</div>}
+      {loading && <Loader loaderWidth={"599px"}/>}
       {error && <div>Error {JSON.stringify(error)}</div>}
       {value && renderTweets(value.docs)}
     </>
