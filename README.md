@@ -1,68 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Привет! Спасибо, что поинтересовался моим проектом, я очень признателен.
+Сейчас я расскажу, что здесь для чего.
 
-## Available Scripts
+## Описание проекта
 
-In the project directory, you can run:
+### `Кнопки`
+- Кнопка Home - загружают твиты от пользователей на которых подписан + собственные.
+- Кнопка Explore - загружает все посты от всех пользователей.
+- Кнопка Profile - открывает твой профиль, где находятся только твои твиты.
+- Кнопка Tweet - открывает модальное окно для создания твита(форма аналогична тому, что появляется при нажатии Home или Explore).
+- Кнопки placeholder - к сожалению, на данный момент нет функций которые бы они выполняли.
 
-### `npm start`
+### `Форма для создания твитов`
+Данная форма находится на страничках Explore и Home, также ее можно найти в модальном окне.
+В данном форме можно добавить текст и изображение с помощью URL.
+Есть небольшая валидация для формы: текст должен содержать не меньше 5 символов и не более 128, ссылка на изображение - либо пустая, либо больше 1 символа.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `Другие возможности приложения`
+- При нажатии на аватар другого пользователя(у твита) открывается страничка этого пользователя и загружаются его твиты. На данной страниче можно подписаться на пользователя и его твиты будут появлятся на страничке Home.
+- Все твиты и данные о пользователях хранятся на cloud firestore
+- Реализована возможность авторизации, но только через аккаунт от гугл
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+К сожалению на данный момент это все возможности данного приложения. Кнопки у твита ничего не делают и цифра 5 у лайков всего лишь заглушка. В будущем в проект будут добавляться новые возможности.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Был создан пользователь Creater, на которого сразу же подписаны все пользователи для того, чтобы у них была возможность прочитать о возможностях данного приложения.
