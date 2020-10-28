@@ -22,7 +22,7 @@ const StyledTweetImg = styled.img`
   max-width: 100%;
 `
 
-function TweetMain({displayName, username, text, image, createTime}) {
+function TweetMain({displayName, username, text, image, createTime, postID, likeCount}) {
   return (
     <StyledTweetMain>
       <ProfileInfoSm 
@@ -42,7 +42,7 @@ function TweetMain({displayName, username, text, image, createTime}) {
       </StyledTweetConent>
 
 
-      <TweetButtons/>
+      <TweetButtons postID={postID} likeCount={likeCount || "0"}/>
     </StyledTweetMain>
   )
 }
