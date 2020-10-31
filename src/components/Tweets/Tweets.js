@@ -34,6 +34,7 @@ function Tweets({filter}) {
         <Tweet
         key={post.id}
         {...post.data()}
+        postID={post.id}
         />
       ))
     return renderPosts.length > 0 
