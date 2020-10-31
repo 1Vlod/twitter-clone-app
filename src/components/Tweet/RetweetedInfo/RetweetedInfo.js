@@ -12,15 +12,18 @@ const StyledRetweetedInfo = styled.div`
 `
 
 function RetweetedInfo() {
-  const {currentPage, setCurrentPage} = useContext(CurrentPageContext)
+  const {currentPage} = useContext(CurrentPageContext)
   const {twitterUser} = useContext(CurrentUserContext)
 
   const retweetAuthor = () => {
-    if (currentPage.type === "otherUserPage") {
+    if (currentPage.type === "OtherUserPage") {
+      return currentPage.displayName
     }
+
+    return twitterUser.name
   }
 
-  return <StyledRetweetedInfo>{retweet}{twitterUser.name} Retweeted</StyledRetweetedInfo>
+  return <StyledRetweetedInfo>{retweet}{retweetAuthor()} Retweeted</StyledRetweetedInfo>
 }
 
 export default RetweetedInfo

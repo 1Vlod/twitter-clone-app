@@ -52,7 +52,8 @@ function Tweet({avatar, retweeted, ...otherOptions}) {
         <StyledUserImage avatar={avatar} onClick={() => setCurrentPage({
           ...currentPage,
           otherUserId: otherOptions.username,
-          type: "OtherUserPage"
+          type: "OtherUserPage",
+          displayName: otherOptions.displayName
         })}>
           {avatar && <img src={avatar} alt="tweet avatar" className={"userImage__avatar"}/>}
         </StyledUserImage>

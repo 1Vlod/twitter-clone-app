@@ -13,11 +13,7 @@ const StyledProfileHeader = styled.div`
   justify-content: space-between;  
 
 `
-const StyledButtonsWrapper = styled.div`
-  button {
-    margin: 0;
-  }
-`
+
 const StyledProfilePhoto = styled.img`
   width: 140px;
   height: 140px;
@@ -31,7 +27,6 @@ const StyledProfilePhoto = styled.img`
 function ProfileHeader({avatar, userTheme, admin}) {
 
   const {currentPage} = useContext(CurrentPageContext)
-
   return (
     <StyledProfileHeader>
       <StyledProfilePhoto src={avatar} alt="ProfilePhoto" mt={userTheme ? "-71px" : 0}/>
