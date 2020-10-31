@@ -14,6 +14,7 @@ const colorVaraiables = {
   blue: "#4BA0EC",
   line: "#3A444C",
   grey: "#8A98A4",
+  red: "#E0245E",
   background: TWITTER_BACKGROUND
 }
 

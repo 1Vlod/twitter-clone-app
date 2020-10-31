@@ -4,7 +4,7 @@ import styled, {css} from "styled-components"
 import {randomColor} from "../../utils/utilsFunctions"
 import {CurrentPageContext} from "../../utils/context"
 
-import TweetMain from "./TweetMain"
+import TweetMain from "./TweetMain/TweetMain"
 
 
 

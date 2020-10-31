@@ -8,7 +8,6 @@ import {firestore} from "../../utils/firebase"
 
 
 function Tweets({filter}) {
-  const [posts, setPosts] = useState([])
   let docRef = firestore.collection("posts")
 
   const [value, loading, error] = useCollection(docRef)

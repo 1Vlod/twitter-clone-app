@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import ProfileInfoSm from "../ProfileInfoSm/ProfileInfoSm"
-import TweetButtons from "./TweetButtons"
+import ProfileInfoSm from "../../ProfileInfoSm/ProfileInfoSm"
+import TweetButtons from "./TweetButtons/TweetButtons"
 
 
 const StyledTweetMain = styled.div`
@@ -22,7 +22,7 @@ const StyledTweetImg = styled.img`
   max-width: 100%;
 `
 
-function TweetMain({displayName, username, text, image, createTime, postID, likeCount}) {
+function TweetMain({displayName, username, text, image, createTime, ...btnsData}) {
   return (
     <StyledTweetMain>
       <ProfileInfoSm 
@@ -35,14 +35,14 @@ function TweetMain({displayName, username, text, image, createTime, postID, like
       
       <StyledTweetConent>
         <StyledTweetText>
-        {text}
+          {text}
         </StyledTweetText>
 
         {image && <StyledTweetImg src={image} alt="Tweet Img"/>}
       </StyledTweetConent>
 
 
-      <TweetButtons postID={postID} likeCount={likeCount || "0"}/>
+      <TweetButtons {...btnsData}/>
     </StyledTweetMain>
   )
 }

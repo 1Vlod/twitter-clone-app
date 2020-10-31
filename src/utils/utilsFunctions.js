@@ -24,4 +24,8 @@ function createTwoSymbolsNumber(num) {
   return "0" + num 
 }
 
-export {randomColor, getTimeString}
+function includesChecker(user, item, arrayName) {
+  return user[arrayName]?.includes(item)
+}
+
+export {randomColor, getTimeString, includesChecker}
