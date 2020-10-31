@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react"
-import {useCollectionData, useCollection} from 'react-firebase-hooks/firestore';
+import React, { useState } from "react"
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 import Tweet from "../Tweet/Tweet"
 import Loader from "../Loader/Loader"
@@ -7,7 +7,7 @@ import Loader from "../Loader/Loader"
 import {firestore} from "../../utils/firebase"
 
 
-function Tweets({filter}) {
+function Tweets({filter, retweets}) {
   let docRef = firestore.collection("posts")
 
   const [value, loading, error] = useCollection(docRef)
@@ -22,20 +22,38 @@ function Tweets({filter}) {
 
           return filter.includes(post.data().username)
         }
+
+        if (retweets?.includes(post.id)) {
+          return true 
+        }
+
         if (filter) {
           return post.data().username === filter
         }
-
+        
         return true
       })
       .sort((a, b) => b.data().createTime - a.data().createTime )
-      .map((post) => (
-        <Tweet
-        key={post.id}
-        {...post.data()}
-        postID={post.id}
-        />
-      ))
+      .map((post) => {
+        if (retweets?.includes(post.id)) {
+          return (
+            <Tweet
+              retweeted={true}
+              key={post.id}
+              {...post.data()}
+              postID={post.id}
+            />
+          )
+        }
+
+        return (
+          <Tweet
+            key={post.id}
+            {...post.data()}
+            postID={post.id}
+          />)
+      })
+      
     return renderPosts.length > 0 
       ? renderPosts
       : <div>Empty</div>

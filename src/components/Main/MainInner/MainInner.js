@@ -5,7 +5,6 @@ import ProfileInfo from "../ProfileInfo/ProfileInfo"
 import Tweets from "../../Tweets/Tweets"
 
 function MainInner({info}) {
-
   return (
     <>
       <BackPlate title={info.name}/>
@@ -19,7 +18,7 @@ function MainInner({info}) {
       admin={info.admin}
       />
 
-      <Tweets filter={info.id}/>
+      <Tweets filter={info.id} retweets={info.retweetedPosts}/>
     </>
   )
 } 
