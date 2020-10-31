@@ -42,7 +42,7 @@ function TweetMain({displayName, username, text, image, createTime, ...btnsData}
       </StyledTweetConent>
 
 
-      <TweetButtons {...btnsData}/>
+      <TweetButtons tweetCreaterId={username} {...btnsData}/>
     </StyledTweetMain>
   )
 }

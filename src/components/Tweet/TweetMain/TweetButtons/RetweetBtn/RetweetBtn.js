@@ -11,13 +11,17 @@ import { StyledTweetButton } from "../TweetButtons"
 const retweet = <FontAwesomeIcon icon={faRetweet} />
 
 
-function RetweetBtn({ postID, retweetCount }) {
+function RetweetBtn({ postID, retweetCount, tweetCreaterId }) {
   const { twitterUser } = useContext(CurrentUserContext)
 
   let postDocRef = firestore.collection("posts").doc(postID)
   let twitterUserDocRef = firestore.collection("users").doc(twitterUser.id)
 
   const handleRetweet = () => {
+    if (tweetCreaterId === twitterUser.id) {
+      return
+    }
+
     if (includesChecker(twitterUser, postID, "retweetedPosts") ) {
       return
     } 

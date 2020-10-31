@@ -47,7 +47,7 @@ export const StyledTweetButton = styled.button`
 `
 
 
-function TweetButtons({ postID, likeCount, retweetCount }) {
+function TweetButtons({ postID, likeCount, retweetCount, tweetCreaterId }) {
   const { twitterUser } = useContext(CurrentUserContext)
 
   let postDocRef = firestore.collection("posts").doc(postID)
@@ -61,6 +61,7 @@ function TweetButtons({ postID, likeCount, retweetCount }) {
       <RetweetBtn 
         postID={postID}
         retweetCount={retweetCount}
+        tweetCreaterId={tweetCreaterId}
       />
       <LikeBtn 
         likeCount={likeCount} 
