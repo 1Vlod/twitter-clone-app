@@ -27,7 +27,8 @@ function RetweetBtn({ postID, retweetCount, tweetCreaterId }) {
     } 
 
     postDocRef.update({
-      retweetCount: firebase.firestore.FieldValue.increment(1)
+      retweetCount: firebase.firestore.FieldValue.increment(1),
+      retweeters: firebase.firestore.FieldValue.arrayUnion(twitterUser.id)
     })
 
     twitterUserDocRef.update({
@@ -37,7 +38,8 @@ function RetweetBtn({ postID, retweetCount, tweetCreaterId }) {
 
   const handleUnRetweet = () => {
     postDocRef.update({
-      retweetCount: firebase.firestore.FieldValue.increment(-1)
+      retweetCount: firebase.firestore.FieldValue.increment(-1),
+      retweeters: firebase.firestore.FieldValue.arrayRemove(twitterUser.id)
     })
 
     twitterUserDocRef.update({

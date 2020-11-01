@@ -16,9 +16,6 @@ function Tweets({filter, retweets}) {
     const renderPosts = posts
       .filter(post => {
         if (Array.isArray(filter)) {
-          if (!filter.length) {
-            return true 
-          }
 
           return filter.includes(post.data().username)
         }
