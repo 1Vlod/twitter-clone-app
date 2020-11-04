@@ -71,14 +71,6 @@ function TweetButtons({ postID, likeCount, retweetCount, tweetCreaterId }) {
   )
 }
 
-
-
-
-
-
-
-
-
 export default TweetButtons
 
 
