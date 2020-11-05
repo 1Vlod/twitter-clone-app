@@ -11,8 +11,8 @@ function PostsMain({filter}) {
     <Main>
       <Suspense fallback={<Loader loaderWidth={"599px"} loaderHeight={"110px"}/>}>
         <FormAddTweet/>
-
       </Suspense>
+      
       <Tweets filter={filter}/>
     </Main>
   )

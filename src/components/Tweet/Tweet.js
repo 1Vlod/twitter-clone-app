@@ -7,11 +7,6 @@ import {CurrentPageContext} from "../../utils/context"
 import TweetMain from "./TweetMain/TweetMain"
 import RetweetedInfo from "./RetweetedInfo/RetweetedInfo"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faRetweet } from "@fortawesome/free-solid-svg-icons"
-
-const retweet = <FontAwesomeIcon icon={faRetweet} />
-
 const StyledTweet = styled.div`
   margin-top: 9px;
   display: flex;
@@ -41,7 +36,6 @@ const StyledTweetWrapper = styled.div`
 `
 
 
-
 function Tweet({avatar, retweeted, ...otherOptions}) {
   const {currentPage, setCurrentPage} = useContext(CurrentPageContext)
 
@@ -59,8 +53,8 @@ function Tweet({avatar, retweeted, ...otherOptions}) {
         </StyledUserImage>
 
         <TweetMain {...otherOptions}/>
-
       </StyledTweet>
+      
     </StyledTweetWrapper>
     
   )

@@ -35,9 +35,7 @@ function NewTweetModal({handleClose}) {
         <StyledHeader>
           <ModalClose handleClose={handleClose}/>
         </StyledHeader>
-
-        <FormAddTweet handleClose={handleClose}/>
-        
+        <FormAddTweet handleClose={handleClose}/>               
       </StyledNewTweetModal>
     </ModalWrapper>),
     document.getElementById("root")
