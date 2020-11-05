@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { useDocument, useDocumentData } from "react-firebase-hooks/firestore"
+import { useDocument } from "react-firebase-hooks/firestore"
 
 import { CurrentPageContext } from "../../utils/context"
 import { firestore } from "../../utils/firebase"
@@ -8,6 +8,7 @@ import Tweet from "../Tweet/Tweet"
 import Main from "./Main"
 import Loader from "../Loader/Loader"
 import FormAddComment from "../Forms/FormAddComment"
+import BackPlate from "./BackPlate/BackPlate"
 
 function OneTweetPage({ }) {
   const { currentPage } = useContext(CurrentPageContext)
@@ -17,14 +18,15 @@ function OneTweetPage({ }) {
 
   const [post, postLoading, postError] = useDocument(postDocRef)
   const [comments, commentsLoading, commentsError] = useDocument(commentsDocRef)
-  console.log(comments?.data())
+  
   return (
     <Main>
+      <BackPlate title="Home"/>
       {postLoading && <Loader/>}
       {postError && <div>Sorry, error: {JSON.stringify(postError)}</div>}
       {post && (
         <>
-          <Tweet {...post.data()} postID={post.id}/>
+          <Tweet {...post.data()} postID={post.id} borderTop/>
           <FormAddComment postID={currentPage.postID}/>
         </>
       )}

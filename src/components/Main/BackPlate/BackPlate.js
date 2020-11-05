@@ -37,7 +37,7 @@ const StyledBackBtn = styled.button`
 `
 
 
-function BackPlate({title}) {
+function BackPlate({ title}) {
   const {setCurrentPage} =  useContext(CurrentPageContext)
 
   return (
