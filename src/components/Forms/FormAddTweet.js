@@ -1,10 +1,10 @@
-import React, {useState, useContext} from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 
 import DefaultButton from "../Buttons/DefaultButton"
 
-import {firestore} from "../../utils/firebase"
-import {CurrentUserContext} from "../../utils/context"
+import { firestore, firebase } from "../../utils/firebase"
+import { CurrentUserContext } from "../../utils/context"
 
 const StyledFooter = styled.div`
   padding: 10px;
@@ -36,27 +36,43 @@ const StyledImageInput = styled.input`
 
 
 
-function FormAddTweet({handleClose}) {
+function FormAddTweet({handleClose, postID = ""}) {
 
   const [text, setText] = useState("")
   const [img, setImg] = useState("")
   const {twitterUser} = useContext(CurrentUserContext)
 
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (text.length > 5 && (img.length == 0 || img.length >= 10)){
-      firestore.collection("posts").add({
-        avatar: twitterUser.avatar,
-        displayName: twitterUser.name,
-        text: text.trim(),
-        username: twitterUser.id,
-        image: img,
-        createTime: new Date(),
-        userTheme: twitterUser.userTheme,
-        createrId: twitterUser.id,
-      })
+    if (text.length > 5 && (img.length == 0 || img.length >= 10)) {
+
+      if (postID) {
+        let commentDocRef = firestore.collection("comments").doc(postID)
+        let postDocRef = firestore.collection("posts").doc(postID)
+        
+        const doc = await commentDocRef.get()
+        
+        if (doc.exists) {
+          commentDocRef.update({
+            comments: firebase.firestore.FieldValue.arrayUnion(createPost(twitterUser, text, img))}
+          )
+
+        } else {
+          commentDocRef.set({
+            comments: [createPost(twitterUser, text, img)]
+          })
+        }
+        
+        postDocRef.update({
+          commentsCount: firebase.firestore.FieldValue.increment(1)
+        })
+
+
+      } else {
+        firestore.collection("posts").add(createPost(twitterUser, text, img))
+      }
 
       setText("")
       setImg("")
@@ -86,7 +102,7 @@ function FormAddTweet({handleClose}) {
           mt="0"
           width="97px"
           height="39px">
-          Tweet
+          {postID ? "Comment" : "Tweet"}
         </DefaultButton>
       </StyledFooter>
     </form>
@@ -95,3 +111,16 @@ function FormAddTweet({handleClose}) {
 
 
 export default FormAddTweet
+
+function createPost(twitterUser, text, img) {
+  return {
+    avatar: twitterUser.avatar,
+    displayName: twitterUser.name,
+    text: text.trim(),
+    username: twitterUser.id,
+    image: img,
+    createTime: new Date(),
+    userTheme: twitterUser.userTheme,
+    createrId: twitterUser.id,
+  }
+}

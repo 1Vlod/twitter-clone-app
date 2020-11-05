@@ -22,7 +22,7 @@ const StyledTweetImg = styled.img`
   max-width: 100%;
 `
 
-function TweetMain({displayName, username, text, image, createTime, ...btnsData}) {
+function TweetMain({displayName, username, text, image, createTime, comment, ...btnsData}) {
   return (
     <StyledTweetMain>
       <ProfileInfoSm 
@@ -41,8 +41,7 @@ function TweetMain({displayName, username, text, image, createTime, ...btnsData}
         {image && <StyledTweetImg src={image} alt="Tweet Img"/>}
       </StyledTweetConent>
 
-
-      <TweetButtons tweetCreaterId={username} {...btnsData}/>
+      {!comment && <TweetButtons tweetCreaterId={username} {...btnsData}/>}
     </StyledTweetMain>
   )
 }

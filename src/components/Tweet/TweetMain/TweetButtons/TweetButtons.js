@@ -45,12 +45,13 @@ export const StyledTweetButton = styled.button`
 `
 
 
-function TweetButtons({ postID, likeCount, retweetCount, tweetCreaterId }) {
+function TweetButtons({ postID, likeCount, retweetCount, commentsCount, tweetCreaterId }) {
 
   return (
     <StyledTweetButtons>
       <CommentBtn
         postID={postID}
+        commentsCount={commentsCount}
       />
       <RetweetBtn 
         postID={postID}

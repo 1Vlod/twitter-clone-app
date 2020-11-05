@@ -10,7 +10,7 @@ import { StyledTweetButton } from "../TweetButtons"
 const comment = <FontAwesomeIcon icon={faComment} />
 
 
-function CommentBtn({ postID }) {
+function CommentBtn({ postID, commentsCount }) {
   const { twitterUser } = useContext(CurrentUserContext)
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext)
 
@@ -18,7 +18,6 @@ function CommentBtn({ postID }) {
 
 
   let postDocRef = firestore.collection("posts").doc(postID)
-  let twitterUserDocRef = firestore.collection("users").doc(twitterUser.id)
 
   const handleComment = () => {
     setCurrentPage({
@@ -26,9 +25,16 @@ function CommentBtn({ postID }) {
       type: "OneTweetPage",
       postID
     })
+
+    
   }
   
-  return <StyledTweetButton onClick={handleComment}>{comment}</StyledTweetButton>
+  return (
+    <StyledTweetButton 
+      onClick={handleComment}>
+        {comment} {commentsCount || "0"}
+    </StyledTweetButton>
+  )
 }
 
 export default CommentBtn

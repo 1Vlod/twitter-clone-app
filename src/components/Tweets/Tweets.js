@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { useCollection } from 'react-firebase-hooks/firestore';
 
 import Tweet from "../Tweet/Tweet"
 import Loader from "../Loader/Loader"
 
-import {firestore} from "../../utils/firebase"
+import { firestore } from "../../utils/firebase"
 
 
 function Tweets({filter, retweets}) {
