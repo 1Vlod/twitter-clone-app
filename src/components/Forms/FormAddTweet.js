@@ -51,17 +51,20 @@ function FormAddTweet({handleClose, postID = ""}) {
       if (postID) {
         let commentDocRef = firestore.collection("comments").doc(postID)
         let postDocRef = firestore.collection("posts").doc(postID)
+
+        const commentID = `f${(~~(Math.random()*1e8)).toString(16)}`
+        console.log(commentID)
         
         const doc = await commentDocRef.get()
         
         if (doc.exists) {
           commentDocRef.update({
-            comments: firebase.firestore.FieldValue.arrayUnion(createPost(twitterUser, text, img))}
-          )
+            [commentID]: createPost(twitterUser, text, img, commentID)
+          })
 
         } else {
           commentDocRef.set({
-            comments: [createPost(twitterUser, text, img)]
+            comments: createPost(twitterUser, text, img)
           })
         }
         
@@ -112,7 +115,7 @@ function FormAddTweet({handleClose, postID = ""}) {
 
 export default FormAddTweet
 
-function createPost(twitterUser, text, img) {
+function createPost(twitterUser, text, img, id) {
   return {
     avatar: twitterUser.avatar,
     displayName: twitterUser.name,
@@ -122,5 +125,6 @@ function createPost(twitterUser, text, img) {
     createTime: new Date(),
     userTheme: twitterUser.userTheme,
     createrId: twitterUser.id,
+    commentID: id,
   }
 }

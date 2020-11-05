@@ -1,16 +1,10 @@
 import React from "react"
 import styled, { css } from "styled-components"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShare } from '@fortawesome/free-solid-svg-icons'
-
-
 import LikeBtn from "./LikeBtn/LikeBtn"
 import RetweetBtn from "./RetweetBtn/RetweetBtn"
 import CommentBtn from "./CommentBtn/CommentBtn"
-
-
-const share = <FontAwesomeIcon icon={faShare} />
+import DeleteBtn from "./DeleteBtn/DeleteBtn"
 
 
 const StyledTweetButtons = styled.div`
@@ -45,10 +39,11 @@ export const StyledTweetButton = styled.button`
 `
 
 
-function TweetButtons({ postID, likeCount, retweetCount, commentsCount, tweetCreaterId }) {
-
+function TweetButtons({ postID, likeCount, retweetCount, commentsCount, tweetCreaterId, deletable }) {
+  
   return (
     <StyledTweetButtons>
+    {deletable && <DeleteBtn postID={postID}/>}
       <CommentBtn
         postID={postID}
         commentsCount={commentsCount}

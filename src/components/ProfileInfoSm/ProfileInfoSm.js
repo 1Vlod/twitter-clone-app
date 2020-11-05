@@ -31,6 +31,7 @@ const StyledProfileInfoSm = styled.div`
     font-size: 16px;
     line-height: 19px;
     color: ${props => props.theme.grey};
+    background-color: ${props => props.theme.background};
   }
 
 
@@ -44,7 +45,11 @@ function ProfileInfoSm(props) {
     <StyledProfileInfoSm {...props}>
       <h2 className="profileInfoSm__title">{props.title || "Name"}</h2>
       <span className="profileInfoSm__subtitle">{`@${props.subtitle || "Name"}`}</span>
-  {props.createTime && <span className="profileInfoSm__createTime">{getTimeString(props.createTime.toDate())}</span> }
+      {props.createTime && (
+        <span className="profileInfoSm__createTime">
+          {getTimeString(props.createTime.toDate())}
+        </span>
+      )}
     </StyledProfileInfoSm>
   )
 }

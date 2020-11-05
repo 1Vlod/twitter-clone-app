@@ -1,15 +1,18 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 
 import ProfileInfoSm from "../../ProfileInfoSm/ProfileInfoSm"
 import TweetButtons from "./TweetButtons/TweetButtons"
+import DeleteBtn from "./TweetButtons/DeleteBtn/DeleteBtn"
+
+import { CurrentUserContext } from "../../../utils/context" 
 
 
 const StyledTweetMain = styled.div`
   margin-left: 9px;
   width: 100%;
 `
-const StyledTweetConent = styled.div`
+const StyledTweetContent = styled.div`
 
 `
 
@@ -23,6 +26,8 @@ const StyledTweetImg = styled.img`
 `
 
 function TweetMain({displayName, username, text, image, createTime, comment, ...btnsData}) {
+  const { twitterUser } = useContext(CurrentUserContext)
+  
   return (
     <StyledTweetMain>
       <ProfileInfoSm 
@@ -33,15 +38,20 @@ function TweetMain({displayName, username, text, image, createTime, comment, ...
         createTime={createTime}
       />
       
-      <StyledTweetConent>
+      <StyledTweetContent>
         <StyledTweetText>
           {text}
         </StyledTweetText>
 
         {image && <StyledTweetImg src={image} alt="Tweet Img"/>}
-      </StyledTweetConent>
-
-      {!comment && <TweetButtons tweetCreaterId={username} {...btnsData}/>}
+      </StyledTweetContent>
+      {comment && twitterUser.id === username && <DeleteBtn postID={btnsData.postID} comment={comment}/>}
+      {!comment && (
+        <TweetButtons 
+        tweetCreaterId={username}
+        deletable={twitterUser.id === username} 
+        {...btnsData}/>
+      )}
     </StyledTweetMain>
   )
 }

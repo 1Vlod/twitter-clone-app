@@ -35,7 +35,7 @@ function OneTweetPage({ }) {
 
       {commentsLoading && <Loader/>}
       {commentsError && <div>Sorry, error: {JSON.stringify(commentsError)}</div>}
-      {comments?.exists && (renderComments(comments.data().comments)) }
+      {comments?.exists && (renderComments(comments.data(), currentPage.postID)) }
 
 
     </Main>
@@ -45,15 +45,16 @@ function OneTweetPage({ }) {
 export default OneTweetPage
 
 
-function renderComments(comments) {
+function renderComments(data, postID) {
 
-  return comments
+  return Object.values(data)
     .sort((a, b) => b.createTime - a.createTime )
-    .map((comment, indx) => {
+    .map(comment => {
       return (
         <Tweet
-          comment={true}
-          key={indx}
+          comment={comment.commentID}
+          key={comment.commentID}
+          postID={postID}
           {...comment}
         />)
     })
