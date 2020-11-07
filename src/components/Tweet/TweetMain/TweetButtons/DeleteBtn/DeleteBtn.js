@@ -21,6 +21,10 @@ function DeleteBtn({ postID, comment = ""}) {
         [comment]: firebase.firestore.FieldValue.delete()
       })
 
+      postDocRef.update({
+        commentsCount: firebase.firestore.FieldValue.increment(-1)
+      })
+
       return
     }
     

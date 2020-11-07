@@ -53,7 +53,6 @@ function FormAddTweet({handleClose, postID = ""}) {
         let postDocRef = firestore.collection("posts").doc(postID)
 
         const commentID = `f${(~~(Math.random()*1e8)).toString(16)}`
-        console.log(commentID)
         
         const doc = await commentDocRef.get()
         
