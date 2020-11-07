@@ -55,11 +55,10 @@ const StyledDefaultButton = styled.button`
     }
   `}
 
-  ${props => props.type === "circle" && css`border-radius: 50%`}
+  ${props => props.type === "circle" && css`border-radius: 50%;`}
 `
 
 function DefaultButton({handleClick, ...props}) {
-  
 
   return (
     <StyledDefaultButton onClick={handleClick} {...props}>

@@ -114,7 +114,7 @@ function FormAddTweet({handleClose, postID = ""}) {
 
 export default FormAddTweet
 
-function createPost(twitterUser, text, img, id) {
+function createPost(twitterUser, text, img, id = "") {
   return {
     avatar: twitterUser.avatar,
     displayName: twitterUser.name,

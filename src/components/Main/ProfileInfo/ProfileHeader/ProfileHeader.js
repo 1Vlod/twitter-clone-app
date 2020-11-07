@@ -1,9 +1,10 @@
-import React, {useContext} from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 
 import ButtonsWrapper from "./ButtonsWrapper"
+import FormChangeTheme from "../../../Forms/FormChangeTheme"
 
-import {CurrentPageContext} from "../../../../utils/context"
+import { CurrentPageContext } from "../../../../utils/context"
 
 
 
@@ -31,7 +32,7 @@ function ProfileHeader({avatar, userTheme, admin}) {
     <StyledProfileHeader>
       <StyledProfilePhoto src={avatar} alt="ProfilePhoto" mt={userTheme ? "-71px" : 0}/>
       {currentPage.type === "OtherUserPage" && <ButtonsWrapper admin={admin}/>}
-      
+      {currentPage.type === "OwnMain" && <FormChangeTheme userTheme={userTheme}/>}
     </StyledProfileHeader>
   )
 }
