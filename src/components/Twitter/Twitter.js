@@ -11,7 +11,7 @@ const OtherUserPage = React.lazy(() => import("../Main/OtherUserPage"))
 const ExploreMain = React.lazy(() => import("../Main/ExploreMain"))
 const HomeMain = React.lazy(() => import("../Main/HomeMain"))
 const OneTweetPage = React.lazy(() => import("../Main/OneTweetPage"))
-const SignOutButton = React.lazy(() => import("../Buttons/SignOutButton"))
+const Utilities = React.lazy(() => import("../Utilities/Utilities"))
 const Navbar = React.lazy(() => import("../Navbar/Navbar"))
 
 const StyledTwitter = styled.div`
@@ -57,7 +57,7 @@ function Twitter({ twitterUser }) {
 
         </CurrentPageContext.Provider>
         <Suspense fallback={<Loader loaderWidth="211px" loaderHeight="80px"/>}>
-          <SignOutButton ml="32px"/>            
+          <Utilities/>
         </Suspense>
         
         

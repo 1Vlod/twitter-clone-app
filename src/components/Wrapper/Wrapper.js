@@ -15,6 +15,7 @@ const colorVaraiables = {
   line: "#3A444C",
   grey: "#8A98A4",
   red: "#E0245E",
+  twitterCard: "#1C2733",
   background: TWITTER_BACKGROUND
 }
 
@@ -24,7 +25,6 @@ function Wrapper(props) {
     <ThemeProvider theme={colorVaraiables}>
       <StyledWrapper>
         {props.children}
-        
       </StyledWrapper>
     </ThemeProvider>
   )
