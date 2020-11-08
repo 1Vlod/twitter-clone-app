@@ -18,7 +18,7 @@ function TwitterOuter() {
     id: user.uid,
     new: true,
     avatar: user.photoURL,
-    subscribeList: ["M7BWIsFJFbTSYfPIoH1c"],
+    subscribeList: [],
     followersCount: 0,
     userTheme: ""
   })

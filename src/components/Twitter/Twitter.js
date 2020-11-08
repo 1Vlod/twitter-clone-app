@@ -23,7 +23,7 @@ const StyledTwitter = styled.div`
 
 function Twitter({ twitterUser }) {
   
-  const [currentPage, setCurrentPageInitital] = useState({type: "HomeMain"})
+  const [currentPage, setCurrentPageInitital] = useState({type: "ExploreMain"})
   
   function setCurrentPage(state) {
     
