@@ -21,9 +21,13 @@ const StyledTweet = styled.div`
 const StyledUserImage = styled.div`
   height: 49px;
   min-width: 49px;
+
   border-radius: 50%;
+  border: 2px solid transparent;
 
   background: ${randomColor()};
+
+  transition: border-color .5s;
 
   & .userImage__avatar {
     width: 49px;
@@ -31,6 +35,10 @@ const StyledUserImage = styled.div`
     border-radius: 50%;
   }
 
+  &:hover {
+    cursor: pointer;
+    border-color: ${props => props.theme.blue};
+  }
 
   ${props => props.avatar && css`background: none;`}
 `
