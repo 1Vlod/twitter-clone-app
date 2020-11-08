@@ -17,39 +17,33 @@ const StyledMenu = styled.div`
 
 function Menu() {
 
-  const {setCurrentPage} = useContext(CurrentPageContext)
-  const {twitterUser} = useContext(CurrentUserContext)
-
-  let docRef = firestore.collection("users").doc(twitterUser.id)
-
-  const addFollower = () => {
-    docRef.update({
-      followersCount: twitterUser.followersCount + 1
-    })
-  }
+  const { currentPage, setCurrentPage} = useContext(CurrentPageContext)
 
   return (
     <StyledMenu>
       <MenuBtn 
       first={true} 
-      handleClick={() => setCurrentPage(pageCreators.homeMain())}>
+      handleClick={() => setCurrentPage(pageCreators.homeMain())}
+      active={currentPage.type === "HomeMain"}>
         Home
       </MenuBtn>
 
       <MenuBtn 
       handleClick={() => setCurrentPage(pageCreators.exploreMain())}
-      src={explore}>
+      src={explore}
+      active={currentPage.type === "ExploreMain"}>
         Explore
       </MenuBtn>
 
-      <MenuBtn count="3"/>
+      <MenuBtn/>
       <MenuBtn/>
       <MenuBtn/>
       <MenuBtn/>
 
       <MenuBtn 
       handleClick={() => setCurrentPage(pageCreators.ownMain())}
-      src={profile}>
+      src={profile}
+      active={currentPage.type === "OwnMain"}>
         Profile
       </MenuBtn>
 

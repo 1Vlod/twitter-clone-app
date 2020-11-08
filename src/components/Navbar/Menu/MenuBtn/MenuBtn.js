@@ -7,11 +7,14 @@ import ImgWithIndicator from "./ImgWithIndicator/ImgWithIndicator"
 const StyledMenuBtn = styled.button`
   display: flex;
   background: none;
-  border: 1px solid transparent;
   outline: none;
-  color: white;
+
+  border: 1px solid transparent;
+  color: ${props => props.active ? "#4BA0EC" : "white"};
+
   margin: 0;
   padding: 0;
+
   &:hover {
     cursor: pointer;
 
@@ -24,19 +27,23 @@ const StyledMenuBtn = styled.button`
   ${props => props.first || css`
     margin-top: 37px;
   `}
+
 `
 
 const StyledText = styled.span`
   display: block;
+
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+  
   margin-left: 21px;
 `
 
-function MenuBtn({first, count, handleClick, children, src}) {
+function MenuBtn({ first, count, handleClick, children, src, active }) {
+
   return (
-    <StyledMenuBtn first={first} onClick={handleClick}>
+    <StyledMenuBtn first={first} onClick={handleClick} active={active}>
       <ImgWithIndicator count={count} src={src}/>
       <StyledText>{children || "placeholder"}</StyledText>
     </StyledMenuBtn>

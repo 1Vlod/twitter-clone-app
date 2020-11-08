@@ -58,7 +58,7 @@ function Tweets({filter, retweets}) {
 
   return (
     <>
-      {loading && <Loader loaderWidth={"599px"}/>}
+      {loading && <Loader loaderWidth="599px" loaderHeight="200px"/>}
       {error && <div>Error {JSON.stringify(error)}</div>}
       {value && renderTweets(value.docs)}
     </>
