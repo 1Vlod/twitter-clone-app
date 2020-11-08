@@ -42,11 +42,12 @@ function FormAddTweet({handleClose, postID = ""}) {
   const [img, setImg] = useState("")
   const {twitterUser} = useContext(CurrentUserContext)
 
+  let canTweet = text.length > 5 && (img.length == 0 || img.length >= 10)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (text.length > 5 && (img.length == 0 || img.length >= 10)) {
+    if (canTweet) {
 
       if (postID) {
         let commentDocRef = firestore.collection("comments").doc(postID)
@@ -63,7 +64,7 @@ function FormAddTweet({handleClose, postID = ""}) {
 
         } else {
           commentDocRef.set({
-            comments: createPost(twitterUser, text, img)
+            [commentID]: createPost(twitterUser, text, img, commentID)
           })
         }
         
