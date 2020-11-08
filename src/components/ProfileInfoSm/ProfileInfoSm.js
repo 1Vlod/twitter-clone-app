@@ -44,7 +44,7 @@ function ProfileInfoSm(props) {
   return (
     <StyledProfileInfoSm {...props}>
       <h2 className="profileInfoSm__title">{props.title || "Name"}</h2>
-      <span className="profileInfoSm__subtitle">{`@${props.subtitle || "Name"}`}</span>
+      {props.subtitle && <span className="profileInfoSm__subtitle">{`@${props.subtitle }`}</span>}
       {props.createTime && (
         <span className="profileInfoSm__createTime">
           {getTimeString(props.createTime.toDate())}

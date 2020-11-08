@@ -45,7 +45,7 @@ function BackPlate({ title}) {
       <StyledBackBtn onClick={() => setCurrentPage(pageCreators.homeMain())}>
         {arrow}
       </StyledBackBtn>
-      <ProfileInfoSm title={title} subtitle="2,006 Tweets" ml="34px"/>
+      <ProfileInfoSm title={title} ml="34px"/>
     </StyledBackPlate>
   )
 }
