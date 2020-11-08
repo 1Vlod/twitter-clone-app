@@ -10,7 +10,7 @@ import Loader from "../Loader/Loader"
 import FormAddComment from "../Forms/FormAddComment"
 import BackPlate from "./BackPlate/BackPlate"
 
-function OneTweetPage({ }) {
+function OneTweetPage() {
   const { currentPage } = useContext(CurrentPageContext)
 
   let postDocRef = firestore.collection("posts").doc(currentPage.postID)

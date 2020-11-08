@@ -1,7 +1,6 @@
-import React, {useContext} from "react"
+import React from "react"
 import styled from "styled-components"
 
-import {CurrentUserContext, CurrentPageContext} from "../../../../utils/context"
 
 const StyledProfileStats = styled.div`
   margin-top: 14px;
@@ -17,9 +16,6 @@ const StyledCountStats = styled.span`
 `
 
 function ProfileStats({followersCount, followingCount}) {
-
-  const {twitterUser} = useContext(CurrentUserContext)
-  const {currentPage} = useContext(CurrentPageContext)
 
   return (
     <StyledProfileStats>

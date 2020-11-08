@@ -5,7 +5,7 @@ import AltButton from "../Buttons/AltButton"
 import DefaultButton from "../Buttons/DefaultButton"
 
 import { CurrentUserContext } from "../../utils/context"
-import { firebase, firestore } from "../../utils/firebase"
+import { firestore } from "../../utils/firebase"
 
 const StyledFormChangeTheme = styled.form`
 `

@@ -42,7 +42,7 @@ function FormAddTweet({handleClose, postID = ""}) {
   const [img, setImg] = useState("")
   const {twitterUser} = useContext(CurrentUserContext)
 
-  let canTweet = text.length > 5 && (img.length == 0 || img.length >= 10)
+  let canTweet = text.length > 5 && (img.length === 0 || img.length >= 10)
 
   const handleSubmit = async (e) => {
     e.preventDefault()

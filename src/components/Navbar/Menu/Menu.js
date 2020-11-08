@@ -3,8 +3,7 @@ import styled from "styled-components"
 
 import MenuBtn from "./MenuBtn/MenuBtn"
 
-import {CurrentPageContext, CurrentUserContext} from "../../../utils/context"
-import {firestore} from "../../../utils/firebase"
+import { CurrentPageContext } from "../../../utils/context"
 import * as pageCreators from "../../../utils/pageTypeCreataors" 
 
 import explore from "./explore.png"

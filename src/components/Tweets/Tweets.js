@@ -1,10 +1,17 @@
 import React from "react"
+import styled from "styled-components"
 import { useCollection } from 'react-firebase-hooks/firestore';
 
 import Tweet from "../Tweet/Tweet"
 import Loader from "../Loader/Loader"
 
 import { firestore } from "../../utils/firebase"
+
+const StyledEmpty = styled.div`
+  font-size: 25px;
+  padding-left: 13px;
+  border-top: 1px solid ${props => props.theme.line};
+`
 
 
 function Tweets({filter, retweets}) {
@@ -53,7 +60,7 @@ function Tweets({filter, retweets}) {
       
     return renderPosts.length > 0 
       ? renderPosts
-      : <div>Empty</div>
+      : <StyledEmpty>No tweets here yet</StyledEmpty>
   }
 
   return (

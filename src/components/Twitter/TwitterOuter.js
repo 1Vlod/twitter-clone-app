@@ -1,4 +1,4 @@
-import React, {useState, useContext, Suspense} from "react"
+import React, {useState, useContext} from "react"
 import { useDocument } from 'react-firebase-hooks/firestore'
 
 import Loader from "../Loader/Loader"
@@ -13,7 +13,7 @@ import {firebaseContext} from "../../utils/context"
 function TwitterOuter() {
   const {user} = useContext(firebaseContext)
   
-  const [twitterUser, setTwitterUser] = useState({
+  const [twitterUser] = useState({
     name: user.displayName,
     id: user.uid,
     new: true,
