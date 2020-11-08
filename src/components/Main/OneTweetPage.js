@@ -26,7 +26,7 @@ function OneTweetPage({ }) {
       {postError && <div>Sorry, error: {JSON.stringify(postError)}</div>}
       {post && (
         <>
-          <Tweet {...post.data()} postID={post.id} borderTop/>
+          <Tweet {...post.data()} postID={post.id} borderTop pt="13px"/>
           <FormAddComment postID={currentPage.postID}/>
         </>
       )}

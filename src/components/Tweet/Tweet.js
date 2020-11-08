@@ -14,6 +14,8 @@ const StyledTweet = styled.div`
 
   border-bottom: 1px solid ${props => props.theme.line};
   border-top: ${props => props.borderTop && "1px solid #3A444C"};
+
+  padding-top: ${props => props.pt || 0};
 `
 
 const StyledUserImage = styled.div`
@@ -37,13 +39,13 @@ const StyledTweetWrapper = styled.div`
 `
 
 
-function Tweet({avatar, retweeted, borderTop, ...otherOptions}) {
+function Tweet({avatar, retweeted, borderTop, pt, ...otherOptions}) {
   const {currentPage, setCurrentPage} = useContext(CurrentPageContext)
 
   return (
     <StyledTweetWrapper>
       {retweeted && <RetweetedInfo/>}
-      <StyledTweet borderTop={borderTop}>
+      <StyledTweet borderTop={borderTop} pt={pt}>
         <StyledUserImage avatar={avatar} onClick={() => setCurrentPage({
           ...currentPage,
           otherUserId: otherOptions.username,
